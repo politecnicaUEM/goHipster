@@ -203,7 +203,7 @@ public class initGUI extends JFrame {
 		panel_2.add(button_1);
 		button_1.setIcon(new ImageIcon(initGUI.class
 				.getResource("/icons/Male-User.png")));
-		button_1.setToolTipText("change style?");
+		button_1.setToolTipText("reset?");
 		button_1.setMargin(new Insets(0, 0, 0, 0));
 
 		JPanel panel_1 = new JPanel();
