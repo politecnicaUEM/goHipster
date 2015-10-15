@@ -2,6 +2,7 @@ package multiPane01;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
@@ -25,9 +26,7 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-import java.awt.Component;
 
 public class initGUI extends JFrame {
 
@@ -76,25 +75,7 @@ public class initGUI extends JFrame {
 
 		for (LookAndFeelInfo info : javax.swing.UIManager
 				.getInstalledLookAndFeels()) {
-			// if ("Nimbus".equals(info.getName())) {
-			// try {
-			// javax.swing.UIManager.setLookAndFeel(info.getClassName());
-			// } catch (ClassNotFoundException e) {
-			// // TODO Auto-generated catch block
-			// e.printStackTrace();
-			// } catch (InstantiationException e) {
-			// // TODO Auto-generated catch block
-			// e.printStackTrace();
-			// } catch (IllegalAccessException e) {
-			// // TODO Auto-generated catch block
-			// e.printStackTrace();
-			// } catch (UnsupportedLookAndFeelException e) {
-			// // TODO Auto-generated catch block
-			// e.printStackTrace();
-			// }
-			// break;
-			// }
-			// }
+
 			try {
 				javax.swing.UIManager
 						.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
@@ -118,7 +99,7 @@ public class initGUI extends JFrame {
 		JPanel panel = new JPanel();
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
-		panel.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1, false));
+//		panel.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1, false));
 		TitledBorder title;
 		title = BorderFactory.createTitledBorder("features");
 		panel.setBorder(title);
@@ -176,14 +157,16 @@ public class initGUI extends JFrame {
 		panel_2.add(button);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				textArea_1.setForeground(Color.WHITE);
 				textArea_1.setText(selection2Pane() + '\n'
 						+ txtrAadeTusComentarios.getText());
+				
 			}
 		});
 
 		button.setToolTipText("change style?");
-		button.setIcon(new ImageIcon(initGUI.class
-				.getResource("/icons/Annoying-Hipster.png")));
+		// button.setIcon(new ImageIcon(initGUI.class
+		// .getResource("/icons/Annoying-Hipster.png")));
 		// button.setPreferredSize(button.getIcon().getIconWidth(),button.getIcon().getIconHeight());
 		button.setMargin(new Insets(0, 0, 0, 0));
 		button.setIcon(new ImageIcon(initGUI.class
@@ -196,7 +179,8 @@ public class initGUI extends JFrame {
 		JButton button_1 = new JButton("");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textArea_1.setText("");
+//				textArea_1.setText("");
+				textArea_1.setForeground(Color.LIGHT_GRAY);
 				;
 			}
 		});
@@ -207,8 +191,8 @@ public class initGUI extends JFrame {
 		button_1.setMargin(new Insets(0, 0, 0, 0));
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setPreferredSize(new Dimension(50, 50));
-		panel_1.setMaximumSize(new Dimension(50, 50));
+//		panel_1.setPreferredSize(new Dimension(50, 50));
+//		panel_1.setMaximumSize(new Dimension(50, 50));
 		contentPane.add(panel_1);
 		panel_1.setLayout(new BorderLayout(0, 0));
 
@@ -216,20 +200,12 @@ public class initGUI extends JFrame {
 		panel_1.add(tabbedPane);
 
 		JLabel lblNewLabel_1 = new JLabel("to be a hipster");
-		// tabbedPane_2.addTab("New tab", null, lblNewLabel_1, null);
-
 		JLabel lblNewLabel = new JLabel("not to be a hipster");
-		tabbedPane.addTab(
-				"New tab",
-				new ImageIcon(initGUI.class
-						.getResource("/icons/Annoying-Hipster@Low.png")),
-				lblNewLabel, "you are");
-
-		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("hipster", null, lblNewLabel_1, "you are not");
-
-		JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("non hipster", null, lblNewLabel, null);
+		
+		tabbedPane.addTab("hipster", new ImageIcon(initGUI.class
+				.getResource("/icons/Annoying-Hipster@Low.png")), lblNewLabel_1, "you are");
+		tabbedPane.addTab("non hipster", new ImageIcon(initGUI.class
+				.getResource("/icons/Male-User@Low.png")), lblNewLabel, "you are not");
 
 		JScrollPane scrollPane = new JScrollPane();
 		contentPane.add(scrollPane);
