@@ -27,6 +27,7 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.Box;
 
 public class initGUI extends JFrame {
 
@@ -90,7 +91,7 @@ public class initGUI extends JFrame {
 	 */
 	public initGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 375);
+		setBounds(100, 100, 650, 375);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -122,10 +123,10 @@ public class initGUI extends JFrame {
 
 		JPanel panel_5 = new JPanel();
 		panel.add(panel_5);
-		panel_5.setLayout(new GridLayout(0, 1, 0, 0));
+		panel_5.setLayout(new BoxLayout(panel_5, BoxLayout.Y_AXIS));
 
 		JPanel panel_6 = new JPanel();
-		panel_6.setAlignmentY(Component.TOP_ALIGNMENT);
+		panel_6.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		panel_5.add(panel_6);
 		panel_6.setLayout(new BoxLayout(panel_6, BoxLayout.Y_AXIS));
 
@@ -145,6 +146,9 @@ public class initGUI extends JFrame {
 		rdbtnTup.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnTup.setSelected(true);
 		group.add(rdbtnTup);
+		
+		Component verticalGlue = Box.createVerticalGlue();
+		panel_5.add(verticalGlue);
 
 		JPanel panel_2 = new JPanel();
 		panel_5.add(panel_2);
@@ -152,6 +156,7 @@ public class initGUI extends JFrame {
 		/**
 		 * my writing button
 		 */
+		panel_2.setLayout(new BoxLayout(panel_2, BoxLayout.X_AXIS));
 		
 		JButton button = new JButton("");
 		panel_2.add(button);
