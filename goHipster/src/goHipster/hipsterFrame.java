@@ -24,6 +24,9 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JTextArea;
 import java.awt.FlowLayout;
+import javax.swing.border.TitledBorder;
+import javax.swing.JFormattedTextField;
+import java.awt.Color;
 
 public class hipsterFrame extends JFrame {
 
@@ -58,6 +61,7 @@ public class hipsterFrame extends JFrame {
 		contentPane.setLayout(new GridLayout(2, 2, 5, 5));
 		
 		JPanel panel = new JPanel();
+		panel.setBorder(new TitledBorder(null, "features", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		contentPane.add(panel);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
 		
@@ -106,11 +110,6 @@ public class hipsterFrame extends JFrame {
 		panel_7.add(panel_8);
 		panel_8.setLayout(new BoxLayout(panel_8, BoxLayout.X_AXIS));
 		
-		JPanel panel_9 = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel_9.getLayout();
-		flowLayout.setAlignment(FlowLayout.LEFT);
-		panel_8.add(panel_9);
-		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.setIcon(new ImageIcon(hipsterFrame.class.getResource("/icons/Annoying-Hipster.png")));
 		panel_8.add(btnNewButton);
@@ -143,6 +142,7 @@ public class hipsterFrame extends JFrame {
 		panel_2.add(txtrAadeUnComentario);
 		
 		JPanel panel_3 = new JPanel();
+		panel_3.setForeground(Color.WHITE);
 		contentPane.add(panel_3);
 	}
 
