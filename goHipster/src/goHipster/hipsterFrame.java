@@ -120,9 +120,6 @@ public class hipsterFrame extends JFrame {
 		panel_8.add(btnNewButton);
 		btnNewButton.setMargin(new Insets(0, 0, 0, 0));
 		
-		Component horizontalStrut = Box.createHorizontalStrut(20);
-		panel_8.add(horizontalStrut);
-		
 		JButton btnNewButton_1 = new JButton("");
 		btnNewButton_1.setIcon(new ImageIcon(hipsterFrame.class.getResource("/icons/Male-User.png")));
 		panel_8.add(btnNewButton_1);
