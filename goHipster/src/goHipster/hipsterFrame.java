@@ -27,6 +27,8 @@ import java.awt.FlowLayout;
 import javax.swing.border.TitledBorder;
 import javax.swing.JFormattedTextField;
 import java.awt.Color;
+import java.awt.Component;
+import javax.swing.Box;
 
 public class hipsterFrame extends JFrame {
 
@@ -85,6 +87,9 @@ public class hipsterFrame extends JFrame {
 		JCheckBox chckbxNewCheckBox_3 = new JCheckBox("boton cuello");
 		panel_6.add(chckbxNewCheckBox_3);
 		
+		Component horizontalGlue = Box.createHorizontalGlue();
+		panel.add(horizontalGlue);
+		
 		JPanel panel_5 = new JPanel();
 		panel.add(panel_5);
 		
@@ -114,6 +119,9 @@ public class hipsterFrame extends JFrame {
 		btnNewButton.setIcon(new ImageIcon(hipsterFrame.class.getResource("/icons/Annoying-Hipster.png")));
 		panel_8.add(btnNewButton);
 		btnNewButton.setMargin(new Insets(0, 0, 0, 0));
+		
+		Component horizontalStrut = Box.createHorizontalStrut(20);
+		panel_8.add(horizontalStrut);
 		
 		JButton btnNewButton_1 = new JButton("");
 		btnNewButton_1.setIcon(new ImageIcon(hipsterFrame.class.getResource("/icons/Male-User.png")));
