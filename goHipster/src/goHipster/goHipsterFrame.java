@@ -34,6 +34,7 @@ import javax.swing.JScrollPane;
 import java.awt.Color;
 
 import javax.swing.border.EtchedBorder;
+import javax.swing.Box;
 
 public class goHipsterFrame extends JFrame {
 
@@ -47,6 +48,7 @@ public class goHipsterFrame extends JFrame {
 			public void run() {
 				try {
 					goHipsterFrame frame = new goHipsterFrame();
+					frame.setTitle("go Hipster Go!");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -64,7 +66,7 @@ public class goHipsterFrame extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(2, 2, 5, 5));
+		contentPane.setLayout(new GridLayout(2, 2, 2, 2));
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new EtchedBorder(EtchedBorder.RAISED, Color.RED, null));
@@ -89,6 +91,9 @@ public class goHipsterFrame extends JFrame {
 		
 		JCheckBox checkBox_1 = new JCheckBox("bot\u00F3n cuello");
 		panel_4.add(checkBox_1);
+		
+		Component horizontalGlue = Box.createHorizontalGlue();
+		panel.add(horizontalGlue);
 		
 		JPanel panel_10 = new JPanel();
 		panel.add(panel_10);
