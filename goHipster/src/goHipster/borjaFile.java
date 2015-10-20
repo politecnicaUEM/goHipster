@@ -4,7 +4,7 @@ public class borjaFile {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("me gustan los penes");
+		System.out.println("");
 	}
 
 }
