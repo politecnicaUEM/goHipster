@@ -3,6 +3,7 @@ package goHipster;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.jws.Oneway;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -50,6 +51,7 @@ public class goHipsterFrame extends JFrame {
 					goHipsterFrame frame = new goHipsterFrame();
 					frame.setTitle("go Hipster Go!");
 					frame.setVisible(true);
+					frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -67,6 +69,7 @@ public class goHipsterFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(2, 2, 2, 2));
+		
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new EtchedBorder(EtchedBorder.RAISED, Color.RED, null));
@@ -91,6 +94,9 @@ public class goHipsterFrame extends JFrame {
 		
 		JCheckBox checkBox_1 = new JCheckBox("bot\u00F3n cuello");
 		panel_4.add(checkBox_1);
+		
+		Component verticalGlue = Box.createVerticalGlue();
+		panel_4.add(verticalGlue);
 		
 		Component horizontalGlue = Box.createHorizontalGlue();
 		panel.add(horizontalGlue);
@@ -134,6 +140,9 @@ public class goHipsterFrame extends JFrame {
 				btnNewButton_1.setMargin(new Insets(0, 0, 0, 0));
 				btnNewButton_1.setIcon(new ImageIcon(goHipsterFrame.class.getResource("/icons/Male-User@Low.png")));
 				panel_8.add(btnNewButton_1);
+				
+				Component verticalGlue_1 = Box.createVerticalGlue();
+				panel_10.add(verticalGlue_1);
 		
 		
 		
