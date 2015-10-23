@@ -31,6 +31,11 @@ import javax.swing.JMenuItem;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Label;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Panel;
+import java.awt.Color;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class Ventana_Principal extends JFrame {
 
@@ -56,6 +61,10 @@ public class Ventana_Principal extends JFrame {
 	private JMenuItem mntmItemIMenu;
 	private JPanel panel_hipster;
 	private JPanel panel_nonHipster;
+	private JTextArea txtrComentarios;
+	private Panel panel_comentarios;
+	private JLabel lblBarbita;
+	private JLabel lblGafas;
 
 	/**
 	 * Launch the application.
@@ -157,12 +166,31 @@ public class Ventana_Principal extends JFrame {
 		panel_features.add(panel_botones, gbc_panel_botones);
 
 		btnCara_1 = new JButton("");
+		btnCara_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (chckbxBarbita.isSelected()) {
+
+				}
+			}
+		});
+		btnCara_1.setToolTipText("ve tus comentarios");
 		panel_botones.add(btnCara_1);
 		btnCara_1.setIcon(new ImageIcon(Ventana_Principal.class
 				.getResource("/iconos/Annoying-Hipster.png")));
 		btnCara_1.setMargin(new Insets(0, 0, 0, 0));
 
 		btnCara_2 = new JButton("");
+		btnCara_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				/*
+				 * AQUI VAN A IR LOS CAMBIOS EN LAS ETIQUETAS QUE REQUIEREN
+				 * RESETEO
+				 */
+			}
+		});
+		btnCara_2.setToolTipText("reset");
 		btnCara_2.setIcon(new ImageIcon(Ventana_Principal.class
 				.getResource("/iconos/Male-User.png")));
 		btnCara_2.setMargin(new Insets(0, 0, 0, 0));
@@ -170,47 +198,48 @@ public class Ventana_Principal extends JFrame {
 
 		panel_pestañas = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(panel_pestañas);
-		
+
 		panel_hipster = new JPanel();
-		panel_pestañas.addTab("hipster", new ImageIcon(Ventana_Principal.class.getResource("/iconos/Annoying-Hipster@Low.png")), panel_hipster, null);
-		
+		panel_pestañas.addTab(
+				"hipster",
+				new ImageIcon(Ventana_Principal.class
+						.getResource("/iconos/Annoying-Hipster@Low.png")),
+				panel_hipster, null);
+
 		JLabel lblToBeA = new JLabel("to be a hipster");
 		GroupLayout gl_panel_hipster = new GroupLayout(panel_hipster);
-		gl_panel_hipster.setHorizontalGroup(
-			gl_panel_hipster.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_hipster.createSequentialGroup()
-					.addGap(77)
-					.addComponent(lblToBeA)
-					.addContainerGap(88, Short.MAX_VALUE))
-		);
-		gl_panel_hipster.setVerticalGroup(
-			gl_panel_hipster.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel_hipster.createSequentialGroup()
-					.addContainerGap(56, Short.MAX_VALUE)
-					.addComponent(lblToBeA)
-					.addGap(48))
-		);
+		gl_panel_hipster.setHorizontalGroup(gl_panel_hipster
+				.createParallelGroup(Alignment.LEADING).addGroup(
+						gl_panel_hipster.createSequentialGroup().addGap(77)
+								.addComponent(lblToBeA)
+								.addContainerGap(88, Short.MAX_VALUE)));
+		gl_panel_hipster.setVerticalGroup(gl_panel_hipster.createParallelGroup(
+				Alignment.LEADING).addGroup(
+				Alignment.TRAILING,
+				gl_panel_hipster.createSequentialGroup()
+						.addContainerGap(56, Short.MAX_VALUE)
+						.addComponent(lblToBeA).addGap(48)));
 		panel_hipster.setLayout(gl_panel_hipster);
-		
+
 		panel_nonHipster = new JPanel();
-		panel_pestañas.addTab("No Hipster", new ImageIcon(Ventana_Principal.class.getResource("/iconos/Male-User@Low.png")), panel_nonHipster, null);
-		
+		panel_pestañas.addTab(
+				"No Hipster",
+				new ImageIcon(Ventana_Principal.class
+						.getResource("/iconos/Male-User@Low.png")),
+				panel_nonHipster, null);
+
 		JLabel lblNotToBe = new JLabel("not to be a hipster");
 		GroupLayout gl_panel_nonHipster = new GroupLayout(panel_nonHipster);
-		gl_panel_nonHipster.setHorizontalGroup(
-			gl_panel_nonHipster.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_nonHipster.createSequentialGroup()
-					.addGap(66)
-					.addComponent(lblNotToBe)
-					.addContainerGap(71, Short.MAX_VALUE))
-		);
-		gl_panel_nonHipster.setVerticalGroup(
-			gl_panel_nonHipster.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_nonHipster.createSequentialGroup()
-					.addGap(40)
-					.addComponent(lblNotToBe)
-					.addContainerGap(64, Short.MAX_VALUE))
-		);
+		gl_panel_nonHipster.setHorizontalGroup(gl_panel_nonHipster
+				.createParallelGroup(Alignment.LEADING).addGroup(
+						gl_panel_nonHipster.createSequentialGroup().addGap(66)
+								.addComponent(lblNotToBe)
+								.addContainerGap(71, Short.MAX_VALUE)));
+		gl_panel_nonHipster.setVerticalGroup(gl_panel_nonHipster
+				.createParallelGroup(Alignment.LEADING).addGroup(
+						gl_panel_nonHipster.createSequentialGroup().addGap(40)
+								.addComponent(lblNotToBe)
+								.addContainerGap(64, Short.MAX_VALUE)));
 		panel_nonHipster.setLayout(gl_panel_nonHipster);
 
 		tbl_nohipster = new JTabbedPane(JTabbedPane.TOP);
@@ -218,8 +247,44 @@ public class Ventana_Principal extends JFrame {
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		JScrollPane scrollPane = new JScrollPane();
 		contentPane.add(scrollPane);
-		JTextArea txtrEscribeAlgunComentario = new JTextArea();
-		txtrEscribeAlgunComentario.setText("Escribe algun comentario");
-		scrollPane.setViewportView(txtrEscribeAlgunComentario);
+		txtrComentarios = new JTextArea();
+		txtrComentarios.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtrComentarios.setText("");
+			}
+		});
+		txtrComentarios.setText("Escribe algun comentario");
+		scrollPane.setViewportView(txtrComentarios);
+
+		panel_comentarios = new Panel();
+		panel_comentarios.setBackground(Color.BLACK);
+		contentPane.add(panel_comentarios);
+
+		lblBarbita = new JLabel("rvr");
+		lblBarbita.setForeground(Color.RED);
+
+		lblGafas = new JLabel("knn");
+		lblGafas.setForeground(Color.RED);
+		GroupLayout gl_panel_comentarios = new GroupLayout(panel_comentarios);
+		gl_panel_comentarios.setHorizontalGroup(gl_panel_comentarios
+				.createParallelGroup(Alignment.LEADING).addGroup(
+						gl_panel_comentarios
+								.createSequentialGroup()
+								.addContainerGap()
+								.addGroup(
+										gl_panel_comentarios
+												.createParallelGroup(
+														Alignment.LEADING)
+												.addComponent(lblBarbita)
+												.addComponent(lblGafas))
+								.addContainerGap(237, Short.MAX_VALUE)));
+		gl_panel_comentarios.setVerticalGroup(gl_panel_comentarios
+				.createParallelGroup(Alignment.LEADING).addGroup(
+						gl_panel_comentarios.createSequentialGroup()
+								.addContainerGap().addComponent(lblBarbita)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(lblGafas).addGap(107)));
+		panel_comentarios.setLayout(gl_panel_comentarios);
 	}
 }
