@@ -62,9 +62,8 @@ public class Ventana_Principal extends JFrame {
 	private JPanel panel_hipster;
 	private JPanel panel_nonHipster;
 	private JTextArea txtrComentarios;
-	private Panel panel_comentarios;
-	private JLabel lblBarbita;
-	private JLabel lblGafas;
+	private JTextPane txt_caracteristicas;
+	private JScrollPane scrCaracteristicas;
 
 	/**
 	 * Launch the application.
@@ -169,9 +168,33 @@ public class Ventana_Principal extends JFrame {
 		btnCara_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				String comentarios = "";
 				if (chckbxBarbita.isSelected()) {
-
+					comentarios += "con sus barba" + "\n";
+				} else {
+					comentarios += "sin sus barba" + "\n";
 				}
+				if (chckbxGafasPastas.isSelected()) {
+					comentarios += "con sus gafa pasta" + "\n";
+				} else {
+					comentarios += "sin sus gafa pasta" + "\n";
+				}
+				if (chckbxTup.isSelected()) {
+					comentarios += "con sus tupé" + "\n";
+				} else {
+					comentarios += "sin sus tupé" + "\n";
+				}
+				if (chckbxBotnCuello.isSelected()) {
+					comentarios += "con sus boton en el cuello" + "\n";
+				} else {
+					comentarios += "sin sus boton en el cuello" + "\n";
+				}
+				comentarios += "----------" + "\n";
+				if (!txtrComentarios.getText().equals(
+						"Escribe algun comentario")) {
+					comentarios += txtrComentarios.getText();
+				}
+				txt_caracteristicas.setText(comentarios);
 			}
 		});
 		btnCara_1.setToolTipText("ve tus comentarios");
@@ -184,10 +207,8 @@ public class Ventana_Principal extends JFrame {
 		btnCara_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/*
-				 * AQUI VAN A IR LOS CAMBIOS EN LAS ETIQUETAS QUE REQUIEREN
-				 * RESETEO
-				 */
+				txt_caracteristicas.setText("");
+				txtrComentarios.setText("Escribe algun comentario");
 			}
 		});
 		btnCara_2.setToolTipText("reset");
@@ -245,8 +266,8 @@ public class Ventana_Principal extends JFrame {
 		tbl_nohipster = new JTabbedPane(JTabbedPane.TOP);
 
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		JScrollPane scrollPane = new JScrollPane();
-		contentPane.add(scrollPane);
+		JScrollPane scrComentarios = new JScrollPane();
+		contentPane.add(scrComentarios);
 		txtrComentarios = new JTextArea();
 		txtrComentarios.addMouseListener(new MouseAdapter() {
 			@Override
@@ -255,36 +276,15 @@ public class Ventana_Principal extends JFrame {
 			}
 		});
 		txtrComentarios.setText("Escribe algun comentario");
-		scrollPane.setViewportView(txtrComentarios);
-
-		panel_comentarios = new Panel();
-		panel_comentarios.setBackground(Color.BLACK);
-		contentPane.add(panel_comentarios);
-
-		lblBarbita = new JLabel("rvr");
-		lblBarbita.setForeground(Color.RED);
-
-		lblGafas = new JLabel("knn");
-		lblGafas.setForeground(Color.RED);
-		GroupLayout gl_panel_comentarios = new GroupLayout(panel_comentarios);
-		gl_panel_comentarios.setHorizontalGroup(gl_panel_comentarios
-				.createParallelGroup(Alignment.LEADING).addGroup(
-						gl_panel_comentarios
-								.createSequentialGroup()
-								.addContainerGap()
-								.addGroup(
-										gl_panel_comentarios
-												.createParallelGroup(
-														Alignment.LEADING)
-												.addComponent(lblBarbita)
-												.addComponent(lblGafas))
-								.addContainerGap(237, Short.MAX_VALUE)));
-		gl_panel_comentarios.setVerticalGroup(gl_panel_comentarios
-				.createParallelGroup(Alignment.LEADING).addGroup(
-						gl_panel_comentarios.createSequentialGroup()
-								.addContainerGap().addComponent(lblBarbita)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(lblGafas).addGap(107)));
-		panel_comentarios.setLayout(gl_panel_comentarios);
+		scrComentarios.setViewportView(txtrComentarios);
+				
+				scrCaracteristicas = new JScrollPane();
+				contentPane.add(scrCaracteristicas);
+				
+						txt_caracteristicas = new JTextPane();
+						scrCaracteristicas.setViewportView(txt_caracteristicas);
+						txt_caracteristicas.setForeground(Color.RED);
+						txt_caracteristicas.setEditable(false);
+						txt_caracteristicas.setBackground(Color.BLACK);
 	}
 }
