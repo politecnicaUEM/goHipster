@@ -64,6 +64,7 @@ public class Ventana_principal extends JFrame {
 			public void run() {
 				try {
 					Ventana_principal frame = new Ventana_principal();
+					frame.setResizable(false);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -78,11 +79,13 @@ public class Ventana_principal extends JFrame {
 	public Ventana_principal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 560, 400);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(2, 2, 0, 0));
 
+		// PANEL DE CARACTERÍSTICAS - FEATURES
 		panel_features = new JPanel();
 		panel_features.setBorder(new TitledBorder(null, "features",
 				TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -94,6 +97,7 @@ public class Ventana_principal extends JFrame {
 		gbl_panel_features.rowWeights = new double[] { 0.0, 0.0 };
 		panel_features.setLayout(gbl_panel_features);
 
+		// PANEL DE COMPLEMETOS - CHECKBOXS - GridBagConstrain
 		JPanel panel_checkbox = new JPanel();
 		GridBagConstraints gbc_panel_checkbox = new GridBagConstraints();
 		gbc_panel_checkbox.gridheight = 2;
@@ -117,6 +121,7 @@ public class Ventana_principal extends JFrame {
 		chckbxBotnCuello = new JCheckBox("boton cuello");
 		panel_checkbox.add(chckbxBotnCuello);
 
+		// PANEL DE SEXO - RADIOBUTTON - GridBagConstrain -
 		panel_sexo = new JPanel();
 		GridBagConstraints gbc_panel_sexo = new GridBagConstraints();
 		gbc_panel_sexo.fill = GridBagConstraints.BOTH;
@@ -140,9 +145,6 @@ public class Ventana_principal extends JFrame {
 
 			}
 		});
-				
-				
-				
 
 		buttonGroup.add(rdbtnHombre);
 		panel_sexo.add(rdbtnHombre);
@@ -152,11 +154,11 @@ public class Ventana_principal extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				btnCara_1.setIcon(new ImageIcon(Ventana_principal.class
-						.getResource("/iconos/Female-User.png")));
+						.getResource("/iconos/HipsterGirl@Low.png")));
 				btnCara_1.setMargin(new Insets(0, 0, 0, 0));
 
 				btnCara_2.setIcon(new ImageIcon(Ventana_principal.class
-						.getResource("/iconos/HipsterGirl@Low.png")));
+						.getResource("/iconos/Female-User.png")));
 				btnCara_2.setMargin(new Insets(0, 0, 0, 0));
 
 			}
@@ -169,6 +171,8 @@ public class Ventana_principal extends JFrame {
 		panel_sexo.add(rdbtnOtro);
 
 		panel_botones = new JPanel();
+
+		// PANEL DE BOTONCARAS - ButtonFaces - GridBagConstrain
 		GridBagConstraints gbc_panel_botones = new GridBagConstraints();
 		gbc_panel_botones.fill = GridBagConstraints.BOTH;
 		gbc_panel_botones.gridx = 1;
@@ -181,6 +185,7 @@ public class Ventana_principal extends JFrame {
 
 			}
 		});
+		
 		panel_botones.add(btnCara_1);
 		btnCara_1.setIcon(new ImageIcon(Ventana_principal.class
 				.getResource("/iconos/Annoying-Hipster.png")));
@@ -192,6 +197,9 @@ public class Ventana_principal extends JFrame {
 		btnCara_2.setMargin(new Insets(0, 0, 0, 0));
 		panel_botones.add(btnCara_2);
 
+		
+		
+		// PANEL PESTAÑAS - JTabbedPane \contentPane
 		panel_pestanias = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(panel_pestanias);
 		lblNoHipster = new JLabel("to not be a hipster");
@@ -210,6 +218,7 @@ public class Ventana_principal extends JFrame {
 						.getResource("/iconos/Male-User@Low.png")),
 				lblNoHipster, null);
 
+		// PANEL DE COMENTARIOS - TEXAREA - tabbedPane\JSrollPane
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		JScrollPane scrollPane = new JScrollPane();
 		contentPane.add(scrollPane);
