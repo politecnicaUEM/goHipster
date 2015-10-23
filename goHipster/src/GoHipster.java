@@ -43,9 +43,18 @@ import java.io.BufferedReader;
 
 import javax.swing.Box;
 import javax.swing.JSplitPane;
+import javax.swing.JLabel;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.ButtonGroup;
+import javax.swing.JTextField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.SystemColor;
 
 
 public class GoHipster extends JFrame {
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -80,21 +89,21 @@ public class GoHipster extends JFrame {
 		panel.add(panel_4);
 		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.Y_AXIS));
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Gafas Pasta");
-		chckbxNewCheckBox.setHorizontalAlignment(SwingConstants.LEFT);
-		panel_4.add(chckbxNewCheckBox);
+		JCheckBox chckbxGafasPasta = new JCheckBox("Gafas Pasta");
+		chckbxGafasPasta.setHorizontalAlignment(SwingConstants.LEFT);
+		panel_4.add(chckbxGafasPasta);
 		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Barbita");
-		chckbxNewCheckBox_1.setHorizontalAlignment(SwingConstants.LEFT);
-		panel_4.add(chckbxNewCheckBox_1);
+		JCheckBox chckbxBarbita = new JCheckBox("Barbita");
+		chckbxBarbita.setHorizontalAlignment(SwingConstants.LEFT);
+		panel_4.add(chckbxBarbita);
 		
-		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("Tupe");
-		chckbxNewCheckBox_2.setHorizontalAlignment(SwingConstants.LEFT);
-		panel_4.add(chckbxNewCheckBox_2);
+		JCheckBox chckbxTupe = new JCheckBox("Tupe");
+		chckbxTupe.setHorizontalAlignment(SwingConstants.LEFT);
+		panel_4.add(chckbxTupe);
 		
-		JCheckBox chckbxNewCheckBox_3 = new JCheckBox("Bot\u00F3n cuello");
-		chckbxNewCheckBox_3.setHorizontalAlignment(SwingConstants.LEFT);
-		panel_4.add(chckbxNewCheckBox_3);
+		JCheckBox chckbxBotonCuello = new JCheckBox("Bot\u00F3n cuello");
+		chckbxBotonCuello.setHorizontalAlignment(SwingConstants.LEFT);
+		panel_4.add(chckbxBotonCuello);
 		
 		JPanel panel_5 = new JPanel();
 		panel.add(panel_5);
@@ -104,37 +113,55 @@ public class GoHipster extends JFrame {
 		panel_5.add(panel_8, BorderLayout.NORTH);
 		panel_8.setLayout(new BoxLayout(panel_8, BoxLayout.Y_AXIS));
 		
-		JRadioButton radioButton_2 = new JRadioButton("otros");
-		panel_8.add(radioButton_2);
-		radioButton_2.setVerticalAlignment(SwingConstants.TOP);
-		radioButton_2.setHorizontalAlignment(SwingConstants.LEFT);
+		JRadioButton radioButtonHombre = new JRadioButton("hombre");
+		buttonGroup.add(radioButtonHombre);
+		panel_8.add(radioButtonHombre);
+		radioButtonHombre.setSelected(true);
+		radioButtonHombre.setVerticalAlignment(SwingConstants.TOP);
+		radioButtonHombre.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JRadioButton radioButton = new JRadioButton("hombre");
-		panel_8.add(radioButton);
-		radioButton.setVerticalAlignment(SwingConstants.TOP);
-		radioButton.setHorizontalAlignment(SwingConstants.LEFT);
+		JRadioButton radioButtonMujer = new JRadioButton("mujer");
+		buttonGroup.add(radioButtonMujer);
+		panel_8.add(radioButtonMujer);
+		radioButtonMujer.setVerticalAlignment(SwingConstants.TOP);
+		radioButtonMujer.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JRadioButton radioButton_1 = new JRadioButton("mujer");
-		panel_8.add(radioButton_1);
-		radioButton_1.setVerticalAlignment(SwingConstants.TOP);
-		radioButton_1.setHorizontalAlignment(SwingConstants.LEFT);
+		JRadioButton radioButtonOtros = new JRadioButton("otros");
+		buttonGroup.add(radioButtonOtros);
+		panel_8.add(radioButtonOtros);
+		radioButtonOtros.setVerticalAlignment(SwingConstants.TOP);
+		radioButtonOtros.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JSplitPane splitPane = new JSplitPane();
-		panel_5.add(splitPane, BorderLayout.SOUTH);
+		JPanel panel_9 = new JPanel();
+		panel_5.add(panel_9, BorderLayout.SOUTH);
 		
-		JButton button_1 = new JButton("");
-		splitPane.setLeftComponent(button_1);
-		button_1.setIcon(new ImageIcon("C:\\Users\\Miguel\\Google Drive\\UEM\\Workspace\\VentanaGoHipster\\PNGs\\Male-User.png"));
-		button_1.setMargin(new Insets(0, 0, 0, 0));
-		
-		JButton button = new JButton("");
-		splitPane.setRightComponent(button);
-		button.addActionListener(new ActionListener() {
+		JButton buttonHombre = new JButton("");
+		buttonHombre.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				// Aqui meto el codigo del evento del click
+			
+			}
+		});
+		panel_9.add(buttonHombre);
+		buttonHombre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		button.setIcon(new ImageIcon("C:\\Users\\Miguel\\Google Drive\\UEM\\Workspace\\VentanaGoHipster\\PNGs\\Annoying-Hipster.png"));
-		button.setMargin(new Insets(0, 0, 0, 0));
+		buttonHombre.setIcon(new ImageIcon("C:\\Users\\Miguel\\Google Drive\\UEM\\Workspace\\VentanaGoHipster\\PNGs\\Annoying-Hipster.png"));
+		buttonHombre.setMargin(new Insets(0, 0, 0, 0));
+		
+		JButton buttonMujer = new JButton("");
+		buttonMujer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				// Aqui meto el codigo del evento del click
+			}
+		});
+		panel_9.add(buttonMujer);
+		buttonMujer.setIcon(new ImageIcon("C:\\Users\\Miguel\\Google Drive\\UEM\\Workspace\\VentanaGoHipster\\PNGs\\Male-User.png"));
+		buttonMujer.setMargin(new Insets(0, 0, 0, 0));
 
 		
 		JPanel panel_1 = new JPanel();
@@ -144,14 +171,50 @@ public class GoHipster extends JFrame {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		panel_1.add(tabbedPane);
 		
-		JPanel panel_6 = new JPanel();
-		tabbedPane.addTab("hipster", new ImageIcon("C:\\Users\\Miguel\\Google Drive\\UEM\\Workspace\\VentanaGoHipster\\PNGs\\Annoying-Hipster@Low.png"), panel_6, null);
-		panel_6.setLayout(new BoxLayout(panel_6, BoxLayout.X_AXIS));
+		JPanel pestaniaHipster = new JPanel();
+		tabbedPane.addTab("hipster", new ImageIcon("C:\\Users\\Miguel\\Google Drive\\UEM\\Workspace\\VentanaGoHipster\\PNGs\\Annoying-Hipster@Low.png"), pestaniaHipster, null);
+		tabbedPane.setBackgroundAt(0, SystemColor.inactiveCaption);
 		
-		JPanel panel_7 = new JPanel();
-		panel_7.setToolTipText("");
-		tabbedPane.addTab("non hipster", new ImageIcon("C:\\Users\\Miguel\\Google Drive\\UEM\\Workspace\\VentanaGoHipster\\PNGs\\Male-User@Low.png"), panel_7, null);
-		panel_7.setLayout(new BoxLayout(panel_7, BoxLayout.X_AXIS));
+		JLabel lblToBeA = new JLabel("To be a Hipster");
+		lblToBeA.setBackground(SystemColor.activeCaption);
+		GroupLayout gl_pestaniaHipster = new GroupLayout(pestaniaHipster);
+		gl_pestaniaHipster.setHorizontalGroup(
+			gl_pestaniaHipster.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pestaniaHipster.createSequentialGroup()
+					.addGap(57)
+					.addComponent(lblToBeA)
+					.addContainerGap(153, Short.MAX_VALUE))
+		);
+		gl_pestaniaHipster.setVerticalGroup(
+			gl_pestaniaHipster.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pestaniaHipster.createSequentialGroup()
+					.addGap(54)
+					.addComponent(lblToBeA)
+					.addContainerGap(69, Short.MAX_VALUE))
+		);
+		pestaniaHipster.setLayout(gl_pestaniaHipster);
+		
+		JPanel pestaniaNonHipster = new JPanel();
+		pestaniaNonHipster.setToolTipText("");
+		tabbedPane.addTab("non hipster", new ImageIcon("C:\\Users\\Miguel\\Google Drive\\UEM\\Workspace\\VentanaGoHipster\\PNGs\\Male-User@Low.png"), pestaniaNonHipster, null);
+		
+		JLabel lblNotToBe = new JLabel("Not to be a Hipster");
+		GroupLayout gl_pestaniaNonHipster = new GroupLayout(pestaniaNonHipster);
+		gl_pestaniaNonHipster.setHorizontalGroup(
+			gl_pestaniaNonHipster.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pestaniaNonHipster.createSequentialGroup()
+					.addGap(54)
+					.addComponent(lblNotToBe)
+					.addContainerGap(111, Short.MAX_VALUE))
+		);
+		gl_pestaniaNonHipster.setVerticalGroup(
+			gl_pestaniaNonHipster.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pestaniaNonHipster.createSequentialGroup()
+					.addGap(59)
+					.addComponent(lblNotToBe)
+					.addContainerGap(64, Short.MAX_VALUE))
+		);
+		pestaniaNonHipster.setLayout(gl_pestaniaNonHipster);
 		
 		JPanel panel_2 = new JPanel();
 		getContentPane().add(panel_2);
@@ -160,11 +223,32 @@ public class GoHipster extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		panel_2.add(scrollPane);
 		
-		JTextArea textArea = new JTextArea();
-		scrollPane.setViewportView(textArea);
+		JTextArea cuadroEscribible = new JTextArea();
+		cuadroEscribible.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				cuadroEscribible.setText(null);
+			}
+//			@Override
+//			public void mouseExited(MouseEvent e) {
+//				cuadroEscribible.setText("Introduce un texto...\n");
+//			}
+		});
+		cuadroEscribible.setText("Introduce un texto...\n");
+		scrollPane.setViewportView(cuadroEscribible);
 		
-		JPanel panel_3 = new JPanel();
-		getContentPane().add(panel_3);
+		JPanel cuadroMuestraTexto = new JPanel();
+		cuadroMuestraTexto.setBackground(Color.DARK_GRAY);
+		getContentPane().add(cuadroMuestraTexto);
+		GroupLayout gl_cuadroMuestraTexto = new GroupLayout(cuadroMuestraTexto);
+		gl_cuadroMuestraTexto.setHorizontalGroup(
+			gl_cuadroMuestraTexto.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 261, Short.MAX_VALUE)
+		);
+		gl_cuadroMuestraTexto.setVerticalGroup(
+			gl_cuadroMuestraTexto.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 176, Short.MAX_VALUE)
+		);
+		cuadroMuestraTexto.setLayout(gl_cuadroMuestraTexto);
 	}
-
 }
