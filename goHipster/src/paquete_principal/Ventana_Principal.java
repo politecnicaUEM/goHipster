@@ -163,40 +163,7 @@ public class Ventana_Principal extends JFrame {
 		gbc_panel_botones.gridx = 1;
 		gbc_panel_botones.gridy = 1;
 		panel_features.add(panel_botones, gbc_panel_botones);
-
 		btnCara_1 = new JButton("");
-		btnCara_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				String comentarios = "";
-				if (chckbxBarbita.isSelected()) {
-					comentarios += "con sus barba" + "\n";
-				} else {
-					comentarios += "sin sus barba" + "\n";
-				}
-				if (chckbxGafasPastas.isSelected()) {
-					comentarios += "con sus gafa pasta" + "\n";
-				} else {
-					comentarios += "sin sus gafa pasta" + "\n";
-				}
-				if (chckbxTup.isSelected()) {
-					comentarios += "con sus tupé" + "\n";
-				} else {
-					comentarios += "sin sus tupé" + "\n";
-				}
-				if (chckbxBotnCuello.isSelected()) {
-					comentarios += "con sus boton en el cuello" + "\n";
-				} else {
-					comentarios += "sin sus boton en el cuello" + "\n";
-				}
-				comentarios += "----------" + "\n";
-				if (!txtrComentarios.getText().equals(
-						"Escribe algun comentario")) {
-					comentarios += txtrComentarios.getText();
-				}
-				txt_caracteristicas.setText(comentarios);
-			}
-		});
 		btnCara_1.setToolTipText("ve tus comentarios");
 		panel_botones.add(btnCara_1);
 		btnCara_1.setIcon(new ImageIcon(Ventana_Principal.class
@@ -204,13 +171,7 @@ public class Ventana_Principal extends JFrame {
 		btnCara_1.setMargin(new Insets(0, 0, 0, 0));
 
 		btnCara_2 = new JButton("");
-		btnCara_2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				txt_caracteristicas.setText("");
-				txtrComentarios.setText("Escribe algun comentario");
-			}
-		});
+
 		btnCara_2.setToolTipText("reset");
 		btnCara_2.setIcon(new ImageIcon(Ventana_Principal.class
 				.getResource("/iconos/Male-User.png")));
@@ -262,29 +223,72 @@ public class Ventana_Principal extends JFrame {
 								.addComponent(lblNotToBe)
 								.addContainerGap(64, Short.MAX_VALUE)));
 		panel_nonHipster.setLayout(gl_panel_nonHipster);
-
 		tbl_nohipster = new JTabbedPane(JTabbedPane.TOP);
-
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		JScrollPane scrComentarios = new JScrollPane();
 		contentPane.add(scrComentarios);
 		txtrComentarios = new JTextArea();
+		txtrComentarios.setText("Escribe algun comentario");
+		scrComentarios.setViewportView(txtrComentarios);
+		scrCaracteristicas = new JScrollPane();
+		contentPane.add(scrCaracteristicas);
+		txt_caracteristicas = new JTextPane();
+		scrCaracteristicas.setViewportView(txt_caracteristicas);
+		txt_caracteristicas.setForeground(Color.RED);
+		txt_caracteristicas.setEditable(false);
+		txt_caracteristicas.setBackground(Color.BLACK);
+		// Acciones
+		btnCara_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				poner_comentarios_textarea();
+			}
+		});
+		btnCara_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txt_caracteristicas.setText("");
+				txtrComentarios.setText("Escribe algun comentario");
+			}
+		});
+		/*
+		 * Este metodo es para que se borre el texto que hay en el area de texto
+		 * de comentarios.
+		 */
 		txtrComentarios.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				txtrComentarios.setText("");
+				txtrComentarios.setText("----------");
 			}
 		});
-		txtrComentarios.setText("Escribe algun comentario");
-		scrComentarios.setViewportView(txtrComentarios);
-				
-				scrCaracteristicas = new JScrollPane();
-				contentPane.add(scrCaracteristicas);
-				
-						txt_caracteristicas = new JTextPane();
-						scrCaracteristicas.setViewportView(txt_caracteristicas);
-						txt_caracteristicas.setForeground(Color.RED);
-						txt_caracteristicas.setEditable(false);
-						txt_caracteristicas.setBackground(Color.BLACK);
+	}
+
+	private void poner_comentarios_textarea() {
+		String comentarios = "";
+		if (chckbxBarbita.isSelected()) {
+			comentarios += "con sus barba" + "\n";
+		} else {
+			comentarios += "sin sus barba" + "\n";
+		}
+		if (chckbxGafasPastas.isSelected()) {
+			comentarios += "con sus gafa pasta" + "\n";
+		} else {
+			comentarios += "sin sus gafa pasta" + "\n";
+		}
+		if (chckbxTup.isSelected()) {
+			comentarios += "con sus tupé" + "\n";
+		} else {
+			comentarios += "sin sus tupé" + "\n";
+		}
+		if (chckbxBotnCuello.isSelected()) {
+			comentarios += "con sus boton en el cuello" + "\n";
+		} else {
+			comentarios += "sin sus boton en el cuello" + "\n";
+		}
+		comentarios += "----------" + "\n";
+		if (!txtrComentarios.getText().equals("Escribe algun comentario")) {
+			comentarios += txtrComentarios.getText();
+		}
+		txt_caracteristicas.setText(comentarios);
 	}
 }
