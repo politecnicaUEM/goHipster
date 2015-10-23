@@ -9,14 +9,9 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.GridLayout;
 
-import javax.swing.JScrollPane;
-
 import java.awt.TextArea;
 
 import javax.swing.border.TitledBorder;
-
-import java.awt.Panel;
-import java.awt.FlowLayout;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
@@ -33,8 +28,7 @@ import javax.swing.ImageIcon;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
-import javax.swing.JSplitPane;
+import javax.swing.Box;
 
 public class hipster extends JFrame {
 
@@ -61,7 +55,7 @@ public class hipster extends JFrame {
 	 */
 	public hipster() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 545, 327);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -116,6 +110,9 @@ public class hipster extends JFrame {
 		group.add(rdbtnMujer);
 		group.add(rdbtnOtros);
 		
+		Component verticalGlue = Box.createVerticalGlue();
+		panel_5.add(verticalGlue);
+		
 		JPanel panel_7 = new JPanel();
 		panel_7.setAlignmentY(Component.TOP_ALIGNMENT);
 		panel_7.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -130,6 +127,13 @@ public class hipster extends JFrame {
 		});
 		btnA.setIcon(new ImageIcon(hipster.class.getResource("/Icons/Annoying-Hipster@Low.png")));
 		panel_7.add(btnA);
+		
+		Component horizontalGlue = Box.createHorizontalGlue();
+		panel_7.add(horizontalGlue);
+		
+		JButton btnB = new JButton("");
+		btnB.setIcon(new ImageIcon(hipster.class.getResource("/Icons/Female-User@Low.png")));
+		panel_7.add(btnB);
 		
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1);
