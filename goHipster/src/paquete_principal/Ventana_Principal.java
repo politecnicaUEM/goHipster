@@ -47,12 +47,12 @@ public class Ventana_Principal extends JFrame {
 	private JTabbedPane panel_pestañas;
 	private JTabbedPane tabbedPane;
 	private JTabbedPane tbl_nohipster;
-	private JLabel lblNoHipster;
-	private JLabel lblHipster;
 	private JPanel panel_features;
 	private JMenuBar menuBar;
 	private JMenu mnMenu;
 	private JMenuItem mntmItemIMenu;
+	private JPanel panel_hipster;
+	private JPanel panel_nonHipster;
 
 	/**
 	 * Launch the application.
@@ -167,24 +167,20 @@ public class Ventana_Principal extends JFrame {
 
 		panel_pestañas = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(panel_pestañas);
-		lblNoHipster = new JLabel("to not be a hipster");
+		
+		panel_hipster = new JPanel();
+		panel_pestañas.addTab("hipster", new ImageIcon(Ventana_Principal.class.getResource("/iconos/Annoying-Hipster@Low.png")), panel_hipster, null);
+		
+		panel_nonHipster = new JPanel();
+		panel_pestañas.addTab("No Hipster", new ImageIcon(Ventana_Principal.class.getResource("/iconos/Male-User@Low.png")), panel_nonHipster, null);
 
 		tbl_nohipster = new JTabbedPane(JTabbedPane.TOP);
-
-		lblHipster = new JLabel("to be a Hipster");
-		panel_pestañas.addTab(
-				"Hipster",
-				new ImageIcon(Ventana_Principal.class
-						.getResource("/iconos/Annoying-Hipster@Low.png")),
-				lblHipster, null);
-		panel_pestañas.addTab("non hipster", new ImageIcon(
-				Ventana_Principal.class.getResource("/iconos/Male-User@Low.png")),
-				lblNoHipster, null);
 
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		JScrollPane scrollPane = new JScrollPane();
 		contentPane.add(scrollPane);
-		JTextArea textArea = new JTextArea();
-		scrollPane.setViewportView(textArea);
+		JTextArea txtrEscribeAlgunComentario = new JTextArea();
+		txtrEscribeAlgunComentario.setText("Escribe algun comentario");
+		scrollPane.setViewportView(txtrEscribeAlgunComentario);
 	}
 }
