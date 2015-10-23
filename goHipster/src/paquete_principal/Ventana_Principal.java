@@ -28,6 +28,9 @@ import javax.swing.JToggleButton;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.Label;
 
 public class Ventana_Principal extends JFrame {
 
@@ -171,8 +174,44 @@ public class Ventana_Principal extends JFrame {
 		panel_hipster = new JPanel();
 		panel_pestañas.addTab("hipster", new ImageIcon(Ventana_Principal.class.getResource("/iconos/Annoying-Hipster@Low.png")), panel_hipster, null);
 		
+		JLabel lblToBeA = new JLabel("to be a hipster");
+		GroupLayout gl_panel_hipster = new GroupLayout(panel_hipster);
+		gl_panel_hipster.setHorizontalGroup(
+			gl_panel_hipster.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_hipster.createSequentialGroup()
+					.addGap(77)
+					.addComponent(lblToBeA)
+					.addContainerGap(88, Short.MAX_VALUE))
+		);
+		gl_panel_hipster.setVerticalGroup(
+			gl_panel_hipster.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel_hipster.createSequentialGroup()
+					.addContainerGap(56, Short.MAX_VALUE)
+					.addComponent(lblToBeA)
+					.addGap(48))
+		);
+		panel_hipster.setLayout(gl_panel_hipster);
+		
 		panel_nonHipster = new JPanel();
 		panel_pestañas.addTab("No Hipster", new ImageIcon(Ventana_Principal.class.getResource("/iconos/Male-User@Low.png")), panel_nonHipster, null);
+		
+		JLabel lblNotToBe = new JLabel("not to be a hipster");
+		GroupLayout gl_panel_nonHipster = new GroupLayout(panel_nonHipster);
+		gl_panel_nonHipster.setHorizontalGroup(
+			gl_panel_nonHipster.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_nonHipster.createSequentialGroup()
+					.addGap(66)
+					.addComponent(lblNotToBe)
+					.addContainerGap(71, Short.MAX_VALUE))
+		);
+		gl_panel_nonHipster.setVerticalGroup(
+			gl_panel_nonHipster.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_nonHipster.createSequentialGroup()
+					.addGap(40)
+					.addComponent(lblNotToBe)
+					.addContainerGap(64, Short.MAX_VALUE))
+		);
+		panel_nonHipster.setLayout(gl_panel_nonHipster);
 
 		tbl_nohipster = new JTabbedPane(JTabbedPane.TOP);
 
