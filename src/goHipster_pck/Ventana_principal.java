@@ -29,9 +29,13 @@ import javax.swing.BoxLayout;
 import javax.swing.JTabbedPane;
 import javax.swing.ButtonGroup;
 import javax.swing.JToggleButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Ventana_principal extends JFrame {
-	
+
 	private JPanel contentPane;
 	private JCheckBox chckbxBotnCuello;
 	private JCheckBox chckbxTup;
@@ -51,8 +55,6 @@ public class Ventana_principal extends JFrame {
 	private JLabel lblNoHipster;
 	private JLabel lblHipster;
 	private JPanel panel_features;
-
-
 
 	/**
 	 * Launch the application.
@@ -77,7 +79,7 @@ public class Ventana_principal extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 560, 400);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5,  5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(2, 2, 0, 0));
 
@@ -125,10 +127,40 @@ public class Ventana_principal extends JFrame {
 		panel_sexo.setLayout(new BoxLayout(panel_sexo, BoxLayout.Y_AXIS));
 
 		rdbtnHombre = new JRadioButton("hombre");
+		rdbtnHombre.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnCara_1.setIcon(new ImageIcon(Ventana_principal.class
+						.getResource("/iconos/Annoying-Hipster.png")));
+				btnCara_1.setMargin(new Insets(0, 0, 0, 0));
+
+				btnCara_2.setIcon(new ImageIcon(Ventana_principal.class
+						.getResource("/iconos/Male-User.png")));
+				btnCara_2.setMargin(new Insets(0, 0, 0, 0));
+
+			}
+		});
+				
+				
+				
+
 		buttonGroup.add(rdbtnHombre);
 		panel_sexo.add(rdbtnHombre);
 
 		rdbtnMujer = new JRadioButton("mujer");
+		rdbtnMujer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnCara_1.setIcon(new ImageIcon(Ventana_principal.class
+						.getResource("/iconos/Female-User.png")));
+				btnCara_1.setMargin(new Insets(0, 0, 0, 0));
+
+				btnCara_2.setIcon(new ImageIcon(Ventana_principal.class
+						.getResource("/iconos/HipsterGirl@Low.png")));
+				btnCara_2.setMargin(new Insets(0, 0, 0, 0));
+
+			}
+		});
 		buttonGroup.add(rdbtnMujer);
 		panel_sexo.add(rdbtnMujer);
 
@@ -144,6 +176,11 @@ public class Ventana_principal extends JFrame {
 		panel_features.add(panel_botones, gbc_panel_botones);
 
 		btnCara_1 = new JButton("");
+		btnCara_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+			}
+		});
 		panel_botones.add(btnCara_1);
 		btnCara_1.setIcon(new ImageIcon(Ventana_principal.class
 				.getResource("/iconos/Annoying-Hipster.png")));
@@ -159,12 +196,14 @@ public class Ventana_principal extends JFrame {
 		contentPane.add(panel_pestanias);
 		lblNoHipster = new JLabel("to not be a hipster");
 
-		
-
 		tbl_nohipster = new JTabbedPane(JTabbedPane.TOP);
-		
+
 		lblHipster = new JLabel("to be a Hipster");
-		panel_pestanias.addTab("Hipster", new ImageIcon(Ventana_principal.class.getResource("/iconos/Annoying-Hipster@Low.png")), lblHipster, null);
+		panel_pestanias.addTab(
+				"Hipster",
+				new ImageIcon(Ventana_principal.class
+						.getResource("/iconos/Annoying-Hipster@Low.png")),
+				lblHipster, null);
 		panel_pestanias.addTab(
 				"non hipster",
 				new ImageIcon(Ventana_principal.class
@@ -174,9 +213,16 @@ public class Ventana_principal extends JFrame {
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		JScrollPane scrollPane = new JScrollPane();
 		contentPane.add(scrollPane);
-		JTextArea textArea = new JTextArea();
-		scrollPane.setViewportView(textArea);
+		JTextArea txtrIntroduceUnTexto = new JTextArea();
+		txtrIntroduceUnTexto.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				txtrIntroduceUnTexto.setText(null);
+			}
+
+		});
+		txtrIntroduceUnTexto.setText("Introduce un texto...");
+
+		scrollPane.setViewportView(txtrIntroduceUnTexto);
 	}
 }
-
-
