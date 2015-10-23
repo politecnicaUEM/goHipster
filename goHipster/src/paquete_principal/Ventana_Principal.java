@@ -25,6 +25,9 @@ import javax.swing.BoxLayout;
 import javax.swing.JTabbedPane;
 import javax.swing.ButtonGroup;
 import javax.swing.JToggleButton;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class Ventana_Principal extends JFrame {
 
@@ -47,6 +50,9 @@ public class Ventana_Principal extends JFrame {
 	private JLabel lblNoHipster;
 	private JLabel lblHipster;
 	private JPanel panel_features;
+	private JMenuBar menuBar;
+	private JMenu mnMenu;
+	private JMenuItem mntmItemIMenu;
 
 	/**
 	 * Launch the application.
@@ -68,8 +74,18 @@ public class Ventana_Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Ventana_Principal() {
+		setTitle("go Hipster go");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 531, 348);
+		setBounds(100, 100, 562, 371);
+
+		menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+
+		mnMenu = new JMenu("Menu 1");
+		menuBar.add(mnMenu);
+
+		mntmItemIMenu = new JMenuItem("Item i Menu 1");
+		mnMenu.add(mntmItemIMenu);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -145,7 +161,7 @@ public class Ventana_Principal extends JFrame {
 
 		btnCara_2 = new JButton("");
 		btnCara_2.setIcon(new ImageIcon(Ventana_Principal.class
-				.getResource("/iconos/Annoying-Hipster.png")));
+				.getResource("/iconos/Male-User.png")));
 		btnCara_2.setMargin(new Insets(0, 0, 0, 0));
 		panel_botones.add(btnCara_2);
 
@@ -153,16 +169,16 @@ public class Ventana_Principal extends JFrame {
 		contentPane.add(panel_pestañas);
 		lblNoHipster = new JLabel("to not be a hipster");
 
-		
-
 		tbl_nohipster = new JTabbedPane(JTabbedPane.TOP);
-		
+
 		lblHipster = new JLabel("to be a Hipster");
-		panel_pestañas.addTab("Hipster", new ImageIcon(Ventana_Principal.class.getResource("/iconos/Annoying-Hipster@Low.png")), lblHipster, null);
 		panel_pestañas.addTab(
-				"non hipster",
+				"Hipster",
 				new ImageIcon(Ventana_Principal.class
-						.getResource("/iconos/The-Wolverine@Low.png")),
+						.getResource("/iconos/Annoying-Hipster@Low.png")),
+				lblHipster, null);
+		panel_pestañas.addTab("non hipster", new ImageIcon(
+				Ventana_Principal.class.getResource("/iconos/Male-User@Low.png")),
 				lblNoHipster, null);
 
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
