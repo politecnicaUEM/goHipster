@@ -146,10 +146,13 @@ public class Ventana_Principal extends JFrame {
 		panel_sexo.setLayout(new BoxLayout(panel_sexo, BoxLayout.Y_AXIS));
 
 		rdbtnHombre = new JRadioButton("hombre");
+
+		rdbtnHombre.setSelected(true);
 		buttonGroup.add(rdbtnHombre);
 		panel_sexo.add(rdbtnHombre);
 
 		rdbtnMujer = new JRadioButton("mujer");
+
 		buttonGroup.add(rdbtnMujer);
 		panel_sexo.add(rdbtnMujer);
 
@@ -247,7 +250,7 @@ public class Ventana_Principal extends JFrame {
 		btnCara_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				txt_caracteristicas.setText("");
+				txt_caracteristicas.setText("----------");
 				txtrComentarios.setText("Escribe algun comentario");
 			}
 		});
@@ -258,7 +261,28 @@ public class Ventana_Principal extends JFrame {
 		txtrComentarios.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				txtrComentarios.setText("----------");
+				txtrComentarios.setText("");
+			}
+		});
+		rdbtnMujer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnCara_1.setIcon(new ImageIcon(Ventana_Principal.class
+						.getResource("/iconos/Female-User.png")));
+			}
+		});
+		rdbtnHombre.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnCara_1.setIcon(new ImageIcon(Ventana_Principal.class
+						.getResource("/iconos/Annoying-Hipster.png")));
+			}
+		});
+		rdbtnOtro.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnCara_1.setIcon(new ImageIcon(Ventana_Principal.class
+						.getResource("/iconos/The-Wolverine.png")));
 			}
 		});
 	}
