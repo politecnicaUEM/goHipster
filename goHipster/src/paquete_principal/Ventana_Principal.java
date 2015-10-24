@@ -1,8 +1,6 @@
 package paquete_principal;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -66,11 +64,35 @@ public class Ventana_Principal extends JFrame {
 	private JTextArea txtrComentarios;
 	private JTextPane txt_caracteristicas;
 	private JScrollPane scrCaracteristicas;
+	private ImageIcon cara_hombre_grande;
+	private ImageIcon cara_hombre_chico;
+	private ImageIcon cara_mujer_grande;
+	private ImageIcon cara_mujer_chico;
+	private ImageIcon cara_Wolverine_grande;
+	private ImageIcon cara_Wolverine_chico;
 
 	/**
 	 * Create the frame.
 	 */
 	public Ventana_Principal() {
+		cara_Wolverine_grande = new ImageIcon(
+				Ventana_Principal.class
+						.getResource("/iconos/The-Wolverine.png"));
+		cara_Wolverine_chico = new ImageIcon(
+				Ventana_Principal.class
+						.getResource("/iconos/The-Wolverine@Low.png"));
+		cara_hombre_grande = new ImageIcon(
+				Ventana_Principal.class
+						.getResource("/iconos/Annoying-Hipster.png"));
+		cara_hombre_chico = new ImageIcon(
+				Ventana_Principal.class
+						.getResource("/iconos/Annoying-Hipster@Low.png"));
+		cara_mujer_grande = new ImageIcon(
+				Ventana_Principal.class
+						.getResource("/hipsterICONs/Female-User.png"));
+		cara_mujer_chico = new ImageIcon(
+				Ventana_Principal.class
+						.getResource("/iconos/Female-User@Low.png"));
 		setTitle("go Hipster go");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 562, 371);
@@ -282,29 +304,16 @@ public class Ventana_Principal extends JFrame {
 	private void cambiar_iconos(int entrada) {
 		switch (entrada) {
 		case 1:
-			btnCara_1.setIcon(new ImageIcon(Ventana_Principal.class
-					.getResource("/iconos/Annoying-Hipster.png")));
-			panel_pestañas.setIconAt(
-					0,
-					new ImageIcon(Ventana_Principal.class
-							.getResource("/iconos/Annoying-Hipster@Low.png")));
-
+			btnCara_1.setIcon(cara_hombre_grande);
+			panel_pestañas.setIconAt(0, cara_hombre_chico);
 			break;
 		case 2:
-			btnCara_1.setIcon(new ImageIcon(Ventana_Principal.class
-					.getResource("/hipsterICONs/Female-User.png")));
-			panel_pestañas.setIconAt(
-					0,
-					new ImageIcon(Ventana_Principal.class
-							.getResource("/iconos/Female-User@Low.png")));
+			btnCara_1.setIcon(cara_mujer_grande);
+			panel_pestañas.setIconAt(0, cara_mujer_chico);
 			break;
 		case 3:
-			btnCara_1.setIcon(new ImageIcon(Ventana_Principal.class
-					.getResource("/iconos/The-Wolverine.png")));
-			panel_pestañas.setIconAt(
-					0,
-					new ImageIcon(Ventana_Principal.class
-							.getResource("/iconos/The-Wolverine@Low.png")));
+			btnCara_1.setIcon(cara_Wolverine_grande);
+			panel_pestañas.setIconAt(0, cara_Wolverine_chico);
 			break;
 		}
 	}
