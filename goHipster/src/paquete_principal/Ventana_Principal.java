@@ -36,6 +36,8 @@ import java.awt.event.MouseEvent;
 import java.awt.Panel;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class Ventana_Principal extends JFrame {
 
@@ -205,6 +207,8 @@ public class Ventana_Principal extends JFrame {
 						.addContainerGap(56, Short.MAX_VALUE)
 						.addComponent(lblToBeA).addGap(48)));
 		panel_hipster.setLayout(gl_panel_hipster);
+		panel_hipster.setFocusTraversalPolicy(new FocusTraversalOnArray(
+				new Component[] { lblToBeA }));
 
 		panel_nonHipster = new JPanel();
 		panel_pestañas.addTab(
@@ -236,6 +240,7 @@ public class Ventana_Principal extends JFrame {
 		scrCaracteristicas = new JScrollPane();
 		contentPane.add(scrCaracteristicas);
 		txt_caracteristicas = new JTextPane();
+		txt_caracteristicas.setText("----------");
 		scrCaracteristicas.setViewportView(txt_caracteristicas);
 		txt_caracteristicas.setForeground(Color.RED);
 		txt_caracteristicas.setEditable(false);
@@ -264,27 +269,60 @@ public class Ventana_Principal extends JFrame {
 				txtrComentarios.setText("");
 			}
 		});
-		rdbtnMujer.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				btnCara_1.setIcon(new ImageIcon(Ventana_Principal.class
-						.getResource("/iconos/Female-User.png")));
-			}
-		});
 		rdbtnHombre.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				btnCara_1.setIcon(new ImageIcon(Ventana_Principal.class
-						.getResource("/iconos/Annoying-Hipster.png")));
+				cambiar_iconos(1);
+			}
+		});
+		rdbtnMujer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cambiar_iconos(2);
 			}
 		});
 		rdbtnOtro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				btnCara_1.setIcon(new ImageIcon(Ventana_Principal.class
-						.getResource("/iconos/The-Wolverine.png")));
+				cambiar_iconos(3);
 			}
 		});
+	}
+
+	/**
+	 * si se ingresa 1 se va a cabiar al icono de hombre,si se ingresa 2 se va a
+	 * cambiar a mujer y si se ingresa 3 se va a cambiar a otro
+	 * 
+	 * @param ruta_imagen
+	 */
+	private void cambiar_iconos(int entrada) {
+		switch (entrada) {
+		case 1:
+			btnCara_1.setIcon(new ImageIcon(Ventana_Principal.class
+					.getResource("/iconos/Annoying-Hipster.png")));
+			panel_pestañas.setIconAt(
+					0,
+					new ImageIcon(Ventana_Principal.class
+							.getResource("/iconos/Annoying-Hipster@Low.png")));
+
+			break;
+		case 2:
+			btnCara_1.setIcon(new ImageIcon(Ventana_Principal.class
+					.getResource("/hipsterICONs/Female-User.png")));
+			panel_pestañas.setIconAt(
+					0,
+					new ImageIcon(Ventana_Principal.class
+							.getResource("/iconos/Female-User@Low.png")));
+			break;
+		case 3:
+			btnCara_1.setIcon(new ImageIcon(Ventana_Principal.class
+					.getResource("/iconos/The-Wolverine.png")));
+			panel_pestañas.setIconAt(
+					0,
+					new ImageIcon(Ventana_Principal.class
+							.getResource("/iconos/The-Wolverine@Low.png")));
+			break;
+		}
 	}
 
 	private void poner_comentarios_textarea() {
