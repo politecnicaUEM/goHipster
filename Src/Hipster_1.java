@@ -172,7 +172,7 @@ public class Hipster_1 extends JFrame {
 							});
 						 	panel1_4.add(button1);
 						 	button1.setIcon(new ImageIcon(Hipster_1.class
-						 			.getResource("/icons/Male-User.png")));
+						 			.getResource("/icons2/Female-User.png")));
 						 	button1.setToolTipText("reset?");
 						 	button1.setMargin(new Insets(0, 0, 0, 0));
 						 	
