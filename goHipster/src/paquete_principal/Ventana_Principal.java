@@ -36,6 +36,7 @@ import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
+import java.awt.Canvas;
 
 public class Ventana_Principal extends JFrame {
 
@@ -70,11 +71,17 @@ public class Ventana_Principal extends JFrame {
 	private ImageIcon cara_mujer_chico;
 	private ImageIcon cara_Wolverine_grande;
 	private ImageIcon cara_Wolverine_chico;
+	private JLabel lblCara;
+	private JLabel lblBotonCuello;
+	private JLabel lblTupe;
+	private JLabel lblGafas;
+	private JLabel lblBarbita;
 
 	/**
 	 * Create the frame.
 	 */
 	public Ventana_Principal() {
+
 		cara_Wolverine_grande = new ImageIcon(
 				Ventana_Principal.class
 						.getResource("/iconos/The-Wolverine.png"));
@@ -199,22 +206,24 @@ public class Ventana_Principal extends JFrame {
 						.getResource("/iconos/Annoying-Hipster@Low.png")),
 				panel_hipster, null);
 
-		JLabel lblToBeA = new JLabel("to be a hipster");
+		JLabel lblAntes = new JLabel("");
+		lblAntes.setIcon(new ImageIcon(Ventana_Principal.class
+				.getResource("/hipsterICONs/antes.png")));
 		GroupLayout gl_panel_hipster = new GroupLayout(panel_hipster);
 		gl_panel_hipster.setHorizontalGroup(gl_panel_hipster
 				.createParallelGroup(Alignment.LEADING).addGroup(
 						gl_panel_hipster.createSequentialGroup().addGap(77)
-								.addComponent(lblToBeA)
+								.addComponent(lblAntes)
 								.addContainerGap(88, Short.MAX_VALUE)));
 		gl_panel_hipster.setVerticalGroup(gl_panel_hipster.createParallelGroup(
 				Alignment.LEADING).addGroup(
 				Alignment.TRAILING,
 				gl_panel_hipster.createSequentialGroup()
 						.addContainerGap(56, Short.MAX_VALUE)
-						.addComponent(lblToBeA).addGap(48)));
+						.addComponent(lblAntes).addGap(48)));
 		panel_hipster.setLayout(gl_panel_hipster);
 		panel_hipster.setFocusTraversalPolicy(new FocusTraversalOnArray(
-				new Component[] { lblToBeA }));
+				new Component[] { lblAntes }));
 
 		panel_nonHipster = new JPanel();
 		panel_pestañas.addTab(
@@ -223,19 +232,36 @@ public class Ventana_Principal extends JFrame {
 						.getResource("/iconos/Male-User@Low.png")),
 				panel_nonHipster, null);
 
-		JLabel lblNotToBe = new JLabel("not to be a hipster");
-		GroupLayout gl_panel_nonHipster = new GroupLayout(panel_nonHipster);
-		gl_panel_nonHipster.setHorizontalGroup(gl_panel_nonHipster
-				.createParallelGroup(Alignment.LEADING).addGroup(
-						gl_panel_nonHipster.createSequentialGroup().addGap(66)
-								.addComponent(lblNotToBe)
-								.addContainerGap(71, Short.MAX_VALUE)));
-		gl_panel_nonHipster.setVerticalGroup(gl_panel_nonHipster
-				.createParallelGroup(Alignment.LEADING).addGroup(
-						gl_panel_nonHipster.createSequentialGroup().addGap(40)
-								.addComponent(lblNotToBe)
-								.addContainerGap(64, Short.MAX_VALUE)));
-		panel_nonHipster.setLayout(gl_panel_nonHipster);
+		lblCara = new JLabel("");
+		lblCara.setBounds(0, 0, 107, 107);
+		lblCara.setIcon(new ImageIcon(Ventana_Principal.class
+				.getResource("/hipsterICONs/antes.png")));
+		panel_nonHipster.setLayout(null);
+		panel_nonHipster.add(lblCara);
+
+		lblBotonCuello = new JLabel("");
+		lblBotonCuello.setIcon(new ImageIcon(Ventana_Principal.class
+				.getResource("/hipsterICONs/accesoriobotoncuello.png")));
+		lblBotonCuello.setBounds(0, 0, 107, 107);
+		panel_nonHipster.add(lblBotonCuello);
+
+		lblTupe = new JLabel("");
+		lblTupe.setIcon(new ImageIcon(Ventana_Principal.class
+				.getResource("/hipsterICONs/accesoriotupe.png")));
+		lblTupe.setBounds(0, 0, 107, 107);
+		panel_nonHipster.add(lblTupe);
+
+		lblGafas = new JLabel("");
+		lblGafas.setIcon(new ImageIcon(Ventana_Principal.class
+				.getResource("/hipsterICONs/accesoriogafapasta.png")));
+		lblGafas.setBounds(0, 0, 107, 107);
+		panel_nonHipster.add(lblGafas);
+
+		lblBarbita = new JLabel("");
+		lblBarbita.setIcon(new ImageIcon(Ventana_Principal.class
+				.getResource("/hipsterICONs/accesoriobarbita.png")));
+		lblBarbita.setBounds(0, 0, 107, 107);
+		panel_nonHipster.add(lblBarbita);
 		tbl_nohipster = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		JScrollPane scrComentarios = new JScrollPane();
@@ -251,6 +277,10 @@ public class Ventana_Principal extends JFrame {
 		txt_caracteristicas.setForeground(Color.RED);
 		txt_caracteristicas.setEditable(false);
 		txt_caracteristicas.setBackground(Color.BLACK);
+		lblBarbita.setVisible(false);
+		lblBotonCuello.setVisible(false);
+		lblGafas.setVisible(false);
+		lblTupe.setVisible(false);
 		// Acciones
 		btnCara_1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -322,23 +352,31 @@ public class Ventana_Principal extends JFrame {
 		String comentarios = "";
 		if (chckbxBarbita.isSelected()) {
 			comentarios += "con sus barba" + "\n";
+			lblBarbita.setVisible(true);
 		} else {
 			comentarios += "sin sus barba" + "\n";
+			lblBarbita.setVisible(false);
 		}
 		if (chckbxGafasPastas.isSelected()) {
 			comentarios += "con sus gafa pasta" + "\n";
+			lblGafas.setVisible(true);
 		} else {
 			comentarios += "sin sus gafa pasta" + "\n";
+			lblGafas.setVisible(false);
 		}
 		if (chckbxTup.isSelected()) {
 			comentarios += "con sus tupé" + "\n";
+			lblTupe.setVisible(true);
 		} else {
 			comentarios += "sin sus tupé" + "\n";
+			lblTupe.setVisible(false);
 		}
 		if (chckbxBotnCuello.isSelected()) {
 			comentarios += "con sus boton en el cuello" + "\n";
+			lblBotonCuello.setVisible(true);
 		} else {
 			comentarios += "sin sus boton en el cuello" + "\n";
+			lblBotonCuello.setVisible(false);
 		}
 		comentarios += "----------" + "\n";
 		if (!txtrComentarios.getText().equals("Escribe algun comentario")) {
