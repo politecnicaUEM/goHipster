@@ -1,7 +1,9 @@
 package goHipster;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Insets;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,7 +11,9 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.GridLayout;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
@@ -17,10 +21,19 @@ import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import javax.swing.border.TitledBorder;
+
+import java.awt.Component;
+import java.awt.Panel;
 
 public class MyFrame extends JFrame {
 
 	private JPanel contentPane;
+	private JRadioButton rdbtnH;
+	private JRadioButton rdbtnM;
+	private JRadioButton rdbtnO;
 
 	/**
 	 * Launch the application.
@@ -42,42 +55,82 @@ public class MyFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public MyFrame() {
+		setTitle("go Hipster go!");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 300, 500, 300);
+		setBounds(100, 100, 650, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(2, 2, 5, 5));
+		contentPane.setLayout(new GridLayout(2, 2, 0, 0));
 		
 		JPanel panel = new JPanel();
+		panel.setBorder(new TitledBorder(null, "features", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		contentPane.add(panel);
-		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+		panel.setLayout(new GridLayout(1,0,0,0));
 		
 		JPanel panel_4 = new JPanel();
 		panel.add(panel_4);
 		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.Y_AXIS));
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("New check box");
+		JCheckBox chckbxNewCheckBox = new JCheckBox("gafas pasta");
+		chckbxNewCheckBox.setSelected(true);
 		panel_4.add(chckbxNewCheckBox);
 		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("New check box");
+		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("barbita");
+		chckbxNewCheckBox_1.setSelected(true);
 		panel_4.add(chckbxNewCheckBox_1);
 		
-		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("New check box");
+		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("tupé");
 		panel_4.add(chckbxNewCheckBox_2);
 		
-		JCheckBox chckbxNewCheckBox_3 = new JCheckBox("New check box");
+		JCheckBox chckbxNewCheckBox_3 = new JCheckBox("botón cuello");
 		panel_4.add(chckbxNewCheckBox_3);
 		
 		JPanel panel_5 = new JPanel();
 		panel.add(panel_5);
 		panel_5.setLayout(new BoxLayout(panel_5, BoxLayout.Y_AXIS));
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("New radio button");
-		panel_5.add(rdbtnNewRadioButton_1);
+		JPanel panel_6 = new JPanel();
+		panel_6.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		panel_5.add(panel_6);	
+		panel_6.setLayout(new BoxLayout(panel_6, BoxLayout.Y_AXIS));
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("New radio button");
-		panel_5.add(rdbtnNewRadioButton);
+		ButtonGroup bg = new ButtonGroup();
+
+		rdbtnH = new JRadioButton("Hombre");
+		panel_6.add(rdbtnH);
+		rdbtnH.setHorizontalAlignment(SwingConstants.LEFT);
+		bg.add(rdbtnH);
+		
+		rdbtnM = new JRadioButton("Mujer");
+		panel_6.add(rdbtnM);
+		rdbtnM.setSelected(true);
+		bg.add(rdbtnM);
+		
+		rdbtnO = new JRadioButton("Otros");
+		panel_6.add(rdbtnO);
+		rdbtnO.setHorizontalAlignment(SwingConstants.CENTER);
+		bg.add(rdbtnO);
+		
+		Component verticalGlue = Box.createVerticalGlue();
+		panel_5.add(verticalGlue);		
+		
+		JPanel panel_7 = new JPanel();
+		panel_5.add(panel_7);
+		panel_7.setLayout(new BoxLayout(panel_7, BoxLayout.X_AXIS));
+		
+		Component horizontalGlue = Box.createHorizontalGlue();
+		panel_7.add(horizontalGlue);
+		
+		JButton btn1 = new JButton("");
+		panel_7.add(btn1);
+		btn1.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/Male-User.png")));
+		btn1.setMargin(new Insets(1,1,1,1));
+		
+		JButton btn2 = new JButton("");
+		panel_7.add(btn2);
+		btn2.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/Annoying-Hipster.png")));
+		btn2.setMargin(new Insets(1,1,1,1));
 		
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1);
@@ -86,8 +139,8 @@ public class MyFrame extends JFrame {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		panel_1.add(tabbedPane);
 		
-		JLabel lblNewLabel = new JLabel("to be a Hipster");	
-		JLabel lblNewLabel_1 = new JLabel("not to be a Hipster");
+		JLabel lblNewLabel = new JLabel("not to be a Hipster");	
+		JLabel lblNewLabel_1 = new JLabel("to be a Hipster");
 		
 		tabbedPane.addTab("Hipster", new ImageIcon(
 				MyFrame.class.getResource("/icons/Annoying-Hipster@Low.png")), lblNewLabel_1, "you are");
@@ -106,6 +159,13 @@ public class MyFrame extends JFrame {
 		
 		JPanel panel_3 = new JPanel();
 		contentPane.add(panel_3);
+		panel_3.setLayout(new BorderLayout(0,0));
+		
+		JTextArea textArea2 = new JTextArea();
+		textArea2.setEditable(false);
+		textArea2.setBackground(new Color(120,120,120,255));
+		panel_3.add(textArea2, BorderLayout.CENTER);
+		
 	}
 
 }
