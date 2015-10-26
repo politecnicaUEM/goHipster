@@ -37,6 +37,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 import java.awt.Canvas;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Ventana_Principal extends JFrame {
 
@@ -76,6 +78,7 @@ public class Ventana_Principal extends JFrame {
 	private JLabel lblTupe;
 	private JLabel lblGafas;
 	private JLabel lblBarbita;
+	private JMenuItem mntmVerQueTal;
 
 	/**
 	 * Create the frame.
@@ -110,7 +113,21 @@ public class Ventana_Principal extends JFrame {
 		mnMenu = new JMenu("Menu 1");
 		menuBar.add(mnMenu);
 
-		mntmItemIMenu = new JMenuItem("Item i Menu 1");
+		mntmItemIMenu = new JMenuItem("Resetear!");
+		mntmItemIMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				accion_resetear();
+			}
+		});
+
+		mntmVerQueTal = new JMenuItem("Ver que tal estoy.");
+		mntmVerQueTal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				realizar_acciones();
+			}
+		});
+
+		mnMenu.add(mntmVerQueTal);
 		mnMenu.add(mntmItemIMenu);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -205,23 +222,13 @@ public class Ventana_Principal extends JFrame {
 				new ImageIcon(Ventana_Principal.class
 						.getResource("/iconos/Annoying-Hipster@Low.png")),
 				panel_hipster, null);
+		panel_hipster.setLayout(null);
 
 		JLabel lblAntes = new JLabel("");
+		lblAntes.setBounds(0, 0, 107, 107);
 		lblAntes.setIcon(new ImageIcon(Ventana_Principal.class
 				.getResource("/hipsterICONs/antes.png")));
-		GroupLayout gl_panel_hipster = new GroupLayout(panel_hipster);
-		gl_panel_hipster.setHorizontalGroup(gl_panel_hipster
-				.createParallelGroup(Alignment.LEADING).addGroup(
-						gl_panel_hipster.createSequentialGroup().addGap(77)
-								.addComponent(lblAntes)
-								.addContainerGap(88, Short.MAX_VALUE)));
-		gl_panel_hipster.setVerticalGroup(gl_panel_hipster.createParallelGroup(
-				Alignment.LEADING).addGroup(
-				Alignment.TRAILING,
-				gl_panel_hipster.createSequentialGroup()
-						.addContainerGap(56, Short.MAX_VALUE)
-						.addComponent(lblAntes).addGap(48)));
-		panel_hipster.setLayout(gl_panel_hipster);
+		panel_hipster.add(lblAntes);
 		panel_hipster.setFocusTraversalPolicy(new FocusTraversalOnArray(
 				new Component[] { lblAntes }));
 
@@ -350,9 +357,13 @@ public class Ventana_Principal extends JFrame {
 
 	private void realizar_acciones() {
 		String comentarios = "";
-		if (!chckbxBarbita.isSelected() && !chckbxGafasPastas.isSelected()
-				&& !chckbxTup.isSelected() && !chckbxBotnCuello.isSelected()
-				&& txtrComentarios.getText().equals("Escribe algun comentario")) {
+		if (!chckbxBarbita.isSelected()
+				&& !chckbxGafasPastas.isSelected()
+				&& !chckbxTup.isSelected()
+				&& !chckbxBotnCuello.isSelected()
+				&& (txtrComentarios.getText()
+						.equals("Escribe algun comentario") || txtrComentarios
+						.getText().equals(""))) {
 			comentarios = "Si no seleccionas ninguna caracteristica y no realizas ningun comentario, poco te puedo mostrar.";
 		} else {
 			if (rdbtnMujer.isSelected()) {
