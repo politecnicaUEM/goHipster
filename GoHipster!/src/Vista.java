@@ -51,8 +51,8 @@ public class Vista {
 			public void run() {
 				for (LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 					try {
-						 UIManager.setLookAndFeel(
-						            UIManager.getCrossPlatformLookAndFeelClassName());
+
+						javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -236,7 +236,7 @@ public class Vista {
 				ImageIcon male = new ImageIcon("src/icons/Female-User.png");
 				if (rbn2.isSelected()) {
 					btn2.setIcon(male);
-					
+
 				}
 			}
 		});
