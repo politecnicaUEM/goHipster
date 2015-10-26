@@ -74,18 +74,7 @@ public class MyFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	{
-		for (LookAndFeelInfo info : javax.swing.UIManager
-				.getInstalledLookAndFeels()) {
 
-			try {
-				javax.swing.UIManager
-						.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
 	public MyFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 650, 375);
