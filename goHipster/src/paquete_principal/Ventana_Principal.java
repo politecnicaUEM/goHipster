@@ -350,37 +350,39 @@ public class Ventana_Principal extends JFrame {
 
 	private void realizar_acciones() {
 		String comentarios = "";
-		if (chckbxBarbita.isSelected()) {
-			comentarios += "con sus barba" + "\n";
-			lblBarbita.setVisible(true);
+		if (!chckbxBarbita.isSelected() && !chckbxGafasPastas.isSelected()
+				&& !chckbxTup.isSelected() && !chckbxBotnCuello.isSelected()
+				&& txtrComentarios.getText().equals("Escribe algun comentario")) {
+			comentarios = "Si no seleccionas nada y no realizas ningun comentario, poco te puedo mostrar.";
 		} else {
-			comentarios += "sin sus barba" + "\n";
-			lblBarbita.setVisible(false);
-		}
-		if (chckbxGafasPastas.isSelected()) {
-			comentarios += "con sus gafa pasta" + "\n";
-			lblGafas.setVisible(true);
-		} else {
-			comentarios += "sin sus gafa pasta" + "\n";
-			lblGafas.setVisible(false);
-		}
-		if (chckbxTup.isSelected()) {
-			comentarios += "con sus tupé" + "\n";
-			lblTupe.setVisible(true);
-		} else {
-			comentarios += "sin sus tupé" + "\n";
-			lblTupe.setVisible(false);
-		}
-		if (chckbxBotnCuello.isSelected()) {
-			comentarios += "con sus boton en el cuello" + "\n";
-			lblBotonCuello.setVisible(true);
-		} else {
-			comentarios += "sin sus boton en el cuello" + "\n";
-			lblBotonCuello.setVisible(false);
-		}
-		comentarios += "----------" + "\n";
-		if (!txtrComentarios.getText().equals("Escribe algun comentario")) {
-			comentarios += txtrComentarios.getText();
+			if (chckbxBarbita.isSelected()) {
+				comentarios += "con sus barba" + "\n";
+				lblBarbita.setVisible(true);
+			} else {
+				lblBarbita.setVisible(false);
+			}
+			if (chckbxGafasPastas.isSelected()) {
+				comentarios += "con sus gafa pasta" + "\n";
+				lblGafas.setVisible(true);
+			} else {
+				lblGafas.setVisible(false);
+			}
+			if (chckbxTup.isSelected()) {
+				comentarios += "con sus tupé" + "\n";
+				lblTupe.setVisible(true);
+			} else {
+				lblTupe.setVisible(false);
+			}
+			if (chckbxBotnCuello.isSelected()) {
+				comentarios += "con sus boton en el cuello" + "\n";
+				lblBotonCuello.setVisible(true);
+			} else {
+				lblBotonCuello.setVisible(false);
+			}
+			comentarios += "----------" + "\n";
+			if (!txtrComentarios.getText().equals("Escribe algun comentario")) {
+				comentarios += txtrComentarios.getText();
+			}
 		}
 		txt_caracteristicas.setText(comentarios);
 	}
