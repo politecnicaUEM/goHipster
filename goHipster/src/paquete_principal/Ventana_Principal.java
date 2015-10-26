@@ -412,6 +412,11 @@ public class Ventana_Principal extends JFrame {
 	 * precionar el boton que realiza un reseteo a la interfaz.
 	 */
 	private void accion_resetear() {
+		chckbxBarbita.setSelected(false);
+		chckbxBotnCuello.setSelected(false);
+		chckbxGafasPastas.setSelected(false);
+		chckbxTup.setSelected(false);
+		chckbxBotnCuello.setSelected(false);
 		lblBarbita.setVisible(false);
 		lblGafas.setVisible(false);
 		lblTupe.setVisible(false);
