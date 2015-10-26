@@ -7,9 +7,13 @@ import java.awt.Insets;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
+
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
@@ -17,13 +21,18 @@ import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
 import java.awt.Rectangle;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.border.TitledBorder;
+
 import java.awt.Component;
+
 import javax.swing.Box;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -53,9 +62,11 @@ public class MyFrame extends JFrame {
 				try {
 					MyFrame frame = new MyFrame();
 					frame.setVisible(true);
+					frame.setTitle("go hipster go!");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
 			}
 		});
 	}
@@ -63,18 +74,32 @@ public class MyFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	{
+		for (LookAndFeelInfo info : javax.swing.UIManager
+				.getInstalledLookAndFeels()) {
+
+			try {
+				javax.swing.UIManager
+						.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	public MyFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 300, 500, 300);
+		setBounds(100, 100, 650, 375);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(2, 0, 5, 5));
+		contentPane.setLayout(new GridLayout(2, 2, 0, 0));
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "Features", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		contentPane.add(panel);
-		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+		panel.setLayout(new GridLayout(1, 0, 0, 0));
+		TitledBorder title;
+		title = BorderFactory.createTitledBorder("features");
+		panel.setBorder(title);
 		
 		JPanel panel_4 = new JPanel();
 		panel.add(panel_4);
@@ -101,14 +126,14 @@ public class MyFrame extends JFrame {
 		panel_5.add(panel_6);
 		panel_6.setLayout(new BoxLayout(panel_6, BoxLayout.Y_AXIS));
 		
-		JRadioButton radioButton = new JRadioButton("Hombre");
-		panel_6.add(radioButton);
+		JRadioButton radioButton_3 = new JRadioButton("Hombre");
+		panel_6.add(radioButton_3);
 		
-		JRadioButton radioButton_1 = new JRadioButton("Mujer");
-		panel_6.add(radioButton_1);
+		JRadioButton radioButton_1_1 = new JRadioButton("Mujer");
+		panel_6.add(radioButton_1_1);
 		
-		JRadioButton radioButton_2 = new JRadioButton("Otros");
-		panel_6.add(radioButton_2);
+		JRadioButton radioButton_2_1 = new JRadioButton("Otros");
+		panel_6.add(radioButton_2_1);
 		
 		Component verticalGlue = Box.createVerticalGlue();
 		panel_5.add(verticalGlue);
@@ -122,8 +147,7 @@ public class MyFrame extends JFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textArea_1.setForeground(Color.WHITE);
-				textArea_1.setText(selection2Pane() + '\n'
-						+ textArea.getText());
+				
 			}
 		});
 		button.setToolTipText("change style?");
@@ -135,6 +159,16 @@ public class MyFrame extends JFrame {
 		
 		
 		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea_1.setForeground(Color.LIGHT_GRAY);
+			}
+		});
+		panel_7.add(btnNewButton_1);
+		btnNewButton_1.setIcon(new ImageIcon(MyFrame.class
+				.getResource("/icons/Male-User.png")));
+		btnNewButton_1.setToolTipText("reset?");
+		btnNewButton_1.setMargin(new Insets(0, 0, 0, 0));
 		panel_7.add(btnNewButton_1);
 		
 		JPanel panel_1 = new JPanel();
@@ -150,42 +184,26 @@ public class MyFrame extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("not to be a hipster");
 		tabbedPane.addTab("Non Hipster", new ImageIcon(MyFrame.class.getResource("/icons/Male-User@Low.png")), lblNewLabel_1, "you are not");
 		
-		JPanel panel_2 = new JPanel();
-		contentPane.add(panel_2);
-		panel_2.setLayout(new BorderLayout(0, 0));
-		
 		JScrollPane scrollPane = new JScrollPane();
-		panel_2.add(scrollPane, BorderLayout.CENTER);
+		contentPane.add(scrollPane);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setText("AÒade tus comentarios.");
-		scrollPane.setViewportView(textArea);
+		JTextArea txtTusComentarios = new JTextArea();
+		txtTusComentarios.setText("AÒade tus comentarios.");
+		scrollPane.setViewportView(txtTusComentarios);
 		
-		panel_3 = new JPanel();
-		panel_3.setBackground(Color.GRAY);
+		txtTusComentarios = new JTextArea();
+		txtTusComentarios.setText("AÒade tus comentarios.");
+
+		JPanel panel_3 = new JPanel();
 		contentPane.add(panel_3);
-		
-		JScrollPane textArea_1 = new JScrollPane();
-		panel_3.add(textArea_1,BorderLayout.CENTER);
+		panel_3.setLayout(new BorderLayout(0, 0));
+
+		textArea_1 = new JTextArea();
+		textArea_1.setEditable(false);
+		textArea_1.setBackground(new Color(120, 120, 120, 255));
+		textArea_1.setForeground(Color.WHITE);
+		panel_3.add(textArea_1, BorderLayout.CENTER);
 	}
-	public String selection2Pane() {
-		String text = "";
-		if (chckbxGafasPasta.isSelected())
-			text += "con sus gafitas\n";
-		if (chckbxNewCheckBox.isSelected())
-			text += "con su barbita\n";
-		if (chckbxNewCheckBox_1.isSelected())
-			text += "con su tupe\n";
-		if (chckbxNewCheckBox_2.isSelected())
-			text += "con su bot√≥n en el cuello de moda\n";
-		if (radioButton.isSelected())
-			text += "esa mujer\n";
-		if (radioButton_1.isSelected())
-			text += "ese hombre\n";
-		if (radioButton_2.isSelected())
-			text += "esa sexualidad diversa\n";
-		return text;
+
 
 	}
-}
-
