@@ -201,7 +201,7 @@ public class Ventana_Principal extends JFrame {
 
 		panel_hipster = new JPanel();
 		panel_pestañas.addTab(
-				"hipster",
+				"Antes",
 				new ImageIcon(Ventana_Principal.class
 						.getResource("/iconos/Annoying-Hipster@Low.png")),
 				panel_hipster, null);
@@ -227,7 +227,7 @@ public class Ventana_Principal extends JFrame {
 
 		panel_nonHipster = new JPanel();
 		panel_pestañas.addTab(
-				"No Hipster",
+				"Despues",
 				new ImageIcon(Ventana_Principal.class
 						.getResource("/iconos/Male-User@Low.png")),
 				panel_nonHipster, null);
@@ -285,15 +285,15 @@ public class Ventana_Principal extends JFrame {
 		btnCara_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				poner_comentarios_textarea();
+				realizar_acciones();
 			}
 		});
 		btnCara_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				txt_caracteristicas.setText("----------");
-				txtrComentarios.setText("Escribe algun comentario");
+				accion_resetear();
 			}
+
 		});
 		/*
 		 * Este metodo es para que se borre el texto que hay en el area de texto
@@ -348,7 +348,7 @@ public class Ventana_Principal extends JFrame {
 		}
 	}
 
-	private void poner_comentarios_textarea() {
+	private void realizar_acciones() {
 		String comentarios = "";
 		if (chckbxBarbita.isSelected()) {
 			comentarios += "con sus barba" + "\n";
@@ -383,5 +383,18 @@ public class Ventana_Principal extends JFrame {
 			comentarios += txtrComentarios.getText();
 		}
 		txt_caracteristicas.setText(comentarios);
+	}
+
+	/**
+	 * Aqui se almacenan todas las acciones que se realizan al momento de
+	 * precionar el boton que realiza un reseteo a la interfaz.
+	 */
+	private void accion_resetear() {
+		lblBarbita.setVisible(false);
+		lblGafas.setVisible(false);
+		lblTupe.setVisible(false);
+		lblBotonCuello.setVisible(false);
+		txt_caracteristicas.setText("----------");
+		txtrComentarios.setText("Escribe algun comentario");
 	}
 }
