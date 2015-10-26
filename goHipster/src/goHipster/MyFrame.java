@@ -65,13 +65,13 @@ public class MyFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(2, 2, 5, 5));
+		TitledBorder title;
+		title = BorderFactory.createTitledBorder("features");
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel);
-		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
-		TitledBorder title;
-		title = BorderFactory.createTitledBorder("features");
 		panel.setBorder(title);
+		panel.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JPanel panel_4 = new JPanel();
 		panel.add(panel_4);
@@ -108,7 +108,7 @@ public class MyFrame extends JFrame {
 		panel_6.add(rdbtnNewRadioButton_2);
 		
 		Component verticalGlue = Box.createVerticalGlue();
-		panel_6.add(verticalGlue);
+		panel_5.add(verticalGlue);
 		
 		JPanel panel_7 = new JPanel();
 		panel_5.add(panel_7);
