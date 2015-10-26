@@ -353,8 +353,17 @@ public class Ventana_Principal extends JFrame {
 		if (!chckbxBarbita.isSelected() && !chckbxGafasPastas.isSelected()
 				&& !chckbxTup.isSelected() && !chckbxBotnCuello.isSelected()
 				&& txtrComentarios.getText().equals("Escribe algun comentario")) {
-			comentarios = "Si no seleccionas nada y no realizas ningun comentario, poco te puedo mostrar.";
+			comentarios = "Si no seleccionas ninguna caracteristica y no realizas ningun comentario, poco te puedo mostrar.";
 		} else {
+			if (rdbtnMujer.isSelected()) {
+				comentarios += "Esta mujer esta: " + "\n";
+			}
+			if (rdbtnHombre.isSelected()) {
+				comentarios += "Este hombre esta: " + "\n";
+			}
+			if (rdbtnOtro.isSelected()) {
+				comentarios += "Este ¿? esta: " + "\n";
+			}
 			if (chckbxBarbita.isSelected()) {
 				comentarios += "con sus barba" + "\n";
 				lblBarbita.setVisible(true);
