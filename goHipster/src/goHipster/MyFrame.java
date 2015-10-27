@@ -50,6 +50,7 @@ public class MyFrame extends JFrame {
 	private JRadioButton radbut1 = new JRadioButton("hombre");
 	private JRadioButton radbut2 = new JRadioButton("mujer");
 	private JRadioButton radbut3 = new JRadioButton("otros");
+	//hola
 	private JTextArea Comentario = new JTextArea();
 	private JTextArea textArea = new JTextArea();
 	private JButton button1 = new JButton("");
