@@ -41,10 +41,12 @@ import javax.swing.SwingConstants;
 public class MyFrame extends JFrame {
 
 	private JPanel contentPane;
+	private String txt4 = "";
 	private JCheckBox check1 = new JCheckBox("gafas pasta");
 	private JCheckBox check2 = new JCheckBox("barbita");
 	private JCheckBox check3 = new JCheckBox("tup\u00E9");
 	private JCheckBox check4 = new JCheckBox("bot\u00F3n cuello");
+	private ButtonGroup grupoBoton = new ButtonGroup();
 	private JRadioButton radbut1 = new JRadioButton("hombre");
 	private JRadioButton radbut2 = new JRadioButton("mujer");
 	private JRadioButton radbut3 = new JRadioButton("otros");
@@ -112,9 +114,10 @@ public class MyFrame extends JFrame {
 		panel_5.add(panel_7);
 		panel_7.setLayout(new BoxLayout(panel_7, BoxLayout.Y_AXIS));
 		
-		ButtonGroup grupoBoton = new ButtonGroup();
+		panel_7.add(radbut1);
+		panel_7.add(radbut2);
+		panel_7.add(radbut3);
 		
-		panel_7.add(radbut1);		
 		radbut1.addActionListener(new ActionListener(){
 
 			@Override
@@ -123,9 +126,8 @@ public class MyFrame extends JFrame {
 				button1.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/Annoying-Hipster.png")));
 			}
 			
-		});
-		
-		panel_7.add(radbut2);		
+		});		
+				
 		radbut2.addActionListener(new ActionListener(){
 
 			@Override
@@ -134,9 +136,8 @@ public class MyFrame extends JFrame {
 				button1.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/Female-User.png")));
 			}
 			
-		});
-		
-		panel_7.add(radbut3);		
+		});		
+				
 		radbut3.addActionListener(new ActionListener(){
 
 			@Override
@@ -176,6 +177,20 @@ public class MyFrame extends JFrame {
 		panel_6.add(button2);
 		button2.setAlignmentX(Component.CENTER_ALIGNMENT);
 		button2.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/Male-User.png")));
+		button2.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				if(radbut1.isSelected()){
+					txt4 = "Categoría: Hombre\n";
+				}
+				if(radbut2.isSelected()){
+					txt4 = "Categoría: Mujer\n";
+				}
+				if(radbut3.isSelected()){
+					txt4 = "Categoría: Otro\n";
+				}
+				textArea.setText("Nada que destacar\n" + Comentario.getText());			
+			}
+		});
 		
 		Component rigidArea = Box.createRigidArea(new Dimension(20, 20));
 		panel_5.add(rigidArea);
@@ -215,12 +230,21 @@ public class MyFrame extends JFrame {
 	}
 	
 	public void mostrar_eleccion(){			
-		String txt = "", txt1 = "", txt2 = "", txt3 = "";		
+		String txt = "", txt1 = "", txt2 = "", txt3 = "";
+		if(radbut1.isSelected()){
+			txt4 = "Categoría: Hombre\n";
+		}
+		if(radbut2.isSelected()){
+			txt4 = "Categoría: Mujer\n";
+		}
+		if(radbut3.isSelected()){
+			txt4 = "Categoría: Otro\n";
+		}
 		if(check1.isSelected()){txt = check1.getText() + "\n";}	
 		if(check2.isSelected()){txt1 = check2.getText() + "\n";}		
 		if(check3.isSelected()){txt2 = check3.getText() + "\n";}		
 		if(check4.isSelected()){txt3 = check4.getText() + "\n";}		
-		textArea.setText(txt + txt1 + txt2 + txt3 + "\n" + Comentario.getText());	
+		textArea.setText(txt4 + txt + txt1 + txt2 + txt3 + "\n" + Comentario.getText());	
 	}
 	
 }
