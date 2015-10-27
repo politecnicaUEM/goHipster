@@ -34,6 +34,10 @@ public class MyFrame extends JFrame {
 	private JRadioButton rdbtnH;
 	private JRadioButton rdbtnM;
 	private JRadioButton rdbtnO;
+	JCheckBox chckbxGafas;
+	JCheckBox chckbxBarba;
+	JCheckBox chckbxTupe;
+	JCheckBox chckbxCuello;
 
 	/**
 	 * Launch the application.
@@ -72,19 +76,19 @@ public class MyFrame extends JFrame {
 		panel.add(panel_4);
 		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.Y_AXIS));
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("gafas pasta");
-		chckbxNewCheckBox.setSelected(true);
-		panel_4.add(chckbxNewCheckBox);
+		chckbxGafas = new JCheckBox("gafas pasta");
+		//chckbxGafas.setSelected(true);
+		panel_4.add(chckbxGafas);
 		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("barbita");
-		chckbxNewCheckBox_1.setSelected(true);
-		panel_4.add(chckbxNewCheckBox_1);
+		chckbxBarba = new JCheckBox("barbita");
+		//chckbxBarba.setSelected(true);
+		panel_4.add(chckbxBarba);
 		
-		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("tupé");
-		panel_4.add(chckbxNewCheckBox_2);
+		chckbxTupe = new JCheckBox("tupÃ©");
+		panel_4.add(chckbxTupe);
 		
-		JCheckBox chckbxNewCheckBox_3 = new JCheckBox("botón cuello");
-		panel_4.add(chckbxNewCheckBox_3);
+		chckbxCuello = new JCheckBox("botÃ³n cuello");
+		panel_4.add(chckbxCuello);
 		
 		JPanel panel_5 = new JPanel();
 		panel.add(panel_5);
@@ -104,7 +108,7 @@ public class MyFrame extends JFrame {
 		
 		rdbtnM = new JRadioButton("Mujer");
 		panel_6.add(rdbtnM);
-		rdbtnM.setSelected(true);
+		//rdbtnM.setSelected(true);
 		bg.add(rdbtnM);
 		
 		rdbtnO = new JRadioButton("Otros");
@@ -122,15 +126,15 @@ public class MyFrame extends JFrame {
 		Component horizontalGlue = Box.createHorizontalGlue();
 		panel_7.add(horizontalGlue);
 		
-		JButton btn1 = new JButton("");
-		panel_7.add(btn1);
-		btn1.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/Male-User.png")));
-		btn1.setMargin(new Insets(1,1,1,1));
+		JButton btnAnadir = new JButton("");
+		panel_7.add(btnAnadir);
+		btnAnadir.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/Male-User.png")));
+		btnAnadir.setMargin(new Insets(1,1,1,1));
 		
-		JButton btn2 = new JButton("");
-		panel_7.add(btn2);
-		btn2.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/Annoying-Hipster.png")));
-		btn2.setMargin(new Insets(1,1,1,1));
+		JButton btnReset = new JButton("");
+		panel_7.add(btnReset);
+		btnReset.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/Annoying-Hipster.png")));
+		btnReset.setMargin(new Insets(1,1,1,1));
 		
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1);
@@ -155,6 +159,7 @@ public class MyFrame extends JFrame {
 		panel_2.add(scrollPane, BorderLayout.CENTER);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setText("AÃ±ade tus comentarios....");
 		scrollPane.setViewportView(textArea);
 		
 		JPanel panel_3 = new JPanel();
