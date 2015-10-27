@@ -75,7 +75,7 @@ public class goHipsterFrame extends JFrame {
 	private JPanel panel_4;
 	private JPanel panel;
 	private JPanel contentPane;
-	private JLabel lblResultado;
+	private JTextArea lblResultado;
 	public String str;
 	private JLayeredPane panelHipster;
 	private JLabel lbl;
@@ -280,7 +280,7 @@ public class goHipsterFrame extends JFrame {
 		lbl = new JLabel("Peluquero! una de: ");
 		panel_3.add(lbl, BorderLayout.NORTH);
 
-		lblResultado = new JLabel("");
+		lblResultado = new JTextArea("");
 		lblResultado.setEnabled(false);
 		panel_3.add(lblResultado, BorderLayout.CENTER);
 
@@ -289,6 +289,8 @@ public class goHipsterFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (rbtnMujer.isSelected()) {
+					limpiarCampos();
+					lblResultado.setText("");
 					btnMujer.setVisible(true);
 					btnHombre.setVisible(false);
 					cbBarba.setText("flequillo hachazo");
@@ -301,7 +303,8 @@ public class goHipsterFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (rbtnHombre.isSelected()) {
-					System.out.println("Sele");
+					limpiarCampos();
+					lblResultado.setText("");
 					btnMujer.setVisible(false);
 					btnHombre.setVisible(true);
 					cbBarba.setText("barbita");
@@ -315,7 +318,8 @@ public class goHipsterFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (rbtnOtros.isSelected()) {
-					System.out.println("Sele");
+					limpiarCampos();
+					lblResultado.setText("");
 					btnMujer.setVisible(false);
 					btnHombre.setVisible(true);
 					cbBarba.setText("barbita");
@@ -350,7 +354,7 @@ public class goHipsterFrame extends JFrame {
 			if (checkbox == cbBarba) {
 				if (cbBarba.isSelected()) {
 					longitud += checkbox.getText().length();
-					lblResultado.setText(str += checkbox.getText()+" ");
+					lblResultado.setText(str += checkbox.getText()+"\n");
 					imgBarba.setVisible(true);
 					
 				} else {
@@ -362,7 +366,7 @@ public class goHipsterFrame extends JFrame {
 			if (checkbox == cbBotonCuello) {
 				if (cbBotonCuello.isSelected()) {
 					longitud += checkbox.getText().length();
-					lblResultado.setText(str += checkbox.getText()+" ");
+					lblResultado.setText(str += checkbox.getText()+"\n");
 					imgCuello.setVisible(true);
 				} else {
 					longitud -= checkbox.getText().length();
@@ -374,7 +378,7 @@ public class goHipsterFrame extends JFrame {
 			if (checkbox == cbTupe) {
 				if (cbTupe.isSelected()) {
 					longitud += checkbox.getText().length();
-					lblResultado.setText(str += checkbox.getText()+" ");
+					lblResultado.setText(str += checkbox.getText()+"\n");
 					imgTupe.setVisible(true);
 				} else {
 					longitud -= checkbox.getText().length();
@@ -387,7 +391,7 @@ public class goHipsterFrame extends JFrame {
 			if (checkbox == cbGafa) {
 				if (cbGafa.isSelected()) {
 					longitud += checkbox.getText().length();
-					lblResultado.setText(str += checkbox.getText()+" ");
+					lblResultado.setText(str += checkbox.getText()+"\n");
 					imgGafas.setVisible(true);
 				} else {
 					longitud -= checkbox.getText().length();
@@ -398,4 +402,14 @@ public class goHipsterFrame extends JFrame {
 
 		}
 	}
+	
+	public void limpiarCampos(){
+		longitud=0;
+		cbBarba.setSelected(false);
+		cbBotonCuello.setSelected(false);
+		cbGafa.setSelected(false);
+		cbTupe.setSelected(false);
+
+	}
 }
+
