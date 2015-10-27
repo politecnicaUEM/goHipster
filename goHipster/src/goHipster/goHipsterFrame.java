@@ -1,6 +1,7 @@
 package goHipster;
 
 import java.awt.BorderLayout;
+import java.awt.Checkbox;
 import java.awt.EventQueue;
 import java.awt.LayoutManager;
 import java.awt.Rectangle;
@@ -64,7 +65,7 @@ public class goHipsterFrame extends JFrame {
 	private JScrollPane scrollPane;
 	private JTextArea textArea;
 	private JPanel panel_3;
-	private JLabel imagenHipster, imgBarba, imgGafas,imgTupe,imgCuello;
+	private JLabel imagenHipster, imgBarba, imgGafas, imgTupe, imgCuello;
 	private ButtonGroup group;
 	private JPanel panel_6;
 	private JPanel panel_5;
@@ -108,19 +109,19 @@ public class goHipsterFrame extends JFrame {
 
 		cbGafa = new JCheckBox("gafas pasta");
 		panel_4.add(cbGafa);
-		
+
 		verticalGlue_4 = Box.createVerticalGlue();
 		panel_4.add(verticalGlue_4);
 
 		cbBarba = new JCheckBox("barbita");
 		panel_4.add(cbBarba);
-		
+
 		verticalGlue_3 = Box.createVerticalGlue();
 		panel_4.add(verticalGlue_3);
 
 		cbTupe = new JCheckBox("tup\u00E9");
 		panel_4.add(cbTupe);
-		
+
 		verticalGlue_2 = Box.createVerticalGlue();
 		panel_4.add(verticalGlue_2);
 
@@ -148,21 +149,21 @@ public class goHipsterFrame extends JFrame {
 		group = new ButtonGroup();
 
 		group.add(rbtnMujer);
-		
+
 		verticalGlue_5 = Box.createVerticalGlue();
 		panel_5.add(verticalGlue_5);
 
 		rbtnHombre = new JRadioButton("hombre");
 		panel_5.add(rbtnHombre);
 		group.add(rbtnHombre);
-		
+
 		verticalGlue_6 = Box.createVerticalGlue();
 		panel_5.add(verticalGlue_6);
 
 		rbtnOtros = new JRadioButton("otros");
 		panel_5.add(rbtnOtros);
 		group.add(rbtnOtros);
-		
+
 		verticalGlue_7 = Box.createVerticalGlue();
 		panel_5.add(verticalGlue_7);
 
@@ -177,14 +178,12 @@ public class goHipsterFrame extends JFrame {
 
 		btnHombre = new JButton("");
 		btnHombre.setMargin(new Insets(0, 0, 0, 0));
-		btnHombre.setIcon(new ImageIcon(goHipsterFrame.class
-				.getResource("/icons/Annoying-Hipster@Low.png")));
+		btnHombre.setIcon(new ImageIcon(goHipsterFrame.class.getResource("/icons/Annoying-Hipster@Low.png")));
 		panel_7.add(btnHombre);
 
 		btnMujer = new JButton("");
 		btnMujer.setMargin(new Insets(0, 0, 0, 0));
-		btnMujer.setIcon(new ImageIcon(goHipsterFrame.class
-				.getResource("/icons/Male-User@Low.png")));
+		btnMujer.setIcon(new ImageIcon(goHipsterFrame.class.getResource("/icons/Male-User@Low.png")));
 		panel_7.add(btnMujer);
 
 		verticalGlue_1 = Box.createVerticalGlue();
@@ -198,68 +197,45 @@ public class goHipsterFrame extends JFrame {
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		panel_1.add(tabbedPane, BorderLayout.CENTER);
 
-		
-		
-		
-		
-		
-		
-		
 		panelHipster = new JLayeredPane();
 		panelHipster.setBounds(new Rectangle(0, 0, 120, 120));
-		panelHipster.setBounds(0,0,100,100);
+		panelHipster.setBounds(0, 0, 100, 100);
 		imagenHipster = new JLabel();
 		imagenHipster.setBounds(55, 0, 99, 102);
 		panelHipster.setLayer(imagenHipster, 1);
-		imagenHipster.setIcon(new ImageIcon(goHipsterFrame.class
-				.getResource("../icons/antes.png")));
-		
-		tabbedPane.addTab(
-				"hipster",
-				new ImageIcon(goHipsterFrame.class
-						.getResource("../icons/Annoying-Hipster@Low.png")),
-				panelHipster, null);
-		imgBarba= new JLabel();
+		imagenHipster.setIcon(new ImageIcon(goHipsterFrame.class.getResource("../icons/antes.png")));
+
+		tabbedPane.addTab("hipster",
+				new ImageIcon(goHipsterFrame.class.getResource("../icons/Annoying-Hipster@Low.png")), panelHipster,
+				null);
+		imgBarba = new JLabel();
 		imgBarba.setBounds(55, 0, 107, 102);
 		imgBarba.setVisible(false);
-		imgBarba.setIcon(new ImageIcon(goHipsterFrame.class
-				.getResource("../icons/accesoriobarbita.png")));
-		
-		imgGafas= new JLabel();
+		imgBarba.setIcon(new ImageIcon(goHipsterFrame.class.getResource("../icons/accesoriobarbita.png")));
+
+		imgGafas = new JLabel();
 		imgGafas.setBounds(55, 0, 107, 102);
 		imgGafas.setVisible(false);
-		imgGafas.setIcon(new ImageIcon(goHipsterFrame.class
-				.getResource("../icons/accesoriogafapasta.png")));
+		imgGafas.setIcon(new ImageIcon(goHipsterFrame.class.getResource("../icons/accesoriogafapasta.png")));
 
 		imgTupe = new JLabel();
 		imgTupe.setBounds(55, 0, 107, 102);
 		imgTupe.setVisible(false);
-		imgTupe.setIcon(new ImageIcon(goHipsterFrame.class
-				.getResource("../icons/accesoriotupe.png")));
-		
+		imgTupe.setIcon(new ImageIcon(goHipsterFrame.class.getResource("../icons/accesoriotupe.png")));
+
 		imgCuello = new JLabel();
 		imgCuello.setBounds(55, 0, 107, 102);
 		imgCuello.setVisible(false);
-		imgCuello.setIcon(new ImageIcon(goHipsterFrame.class
-				.getResource("../icons/accesoriobotoncuello.png")));
-		
+		imgCuello.setIcon(new ImageIcon(goHipsterFrame.class.getResource("../icons/accesoriobotoncuello.png")));
+
 		panelHipster.add(imagenHipster);
 		panelHipster.add(imgBarba);
 		panelHipster.add(imgGafas);
 		panelHipster.add(imgTupe);
 		panelHipster.add(imgCuello);
-		
-		
-		
-		
-		
-		
 
 		lblNewLabel_1 = new JLabel("not to be a hipster");
-		tabbedPane.addTab(
-				"not hipster",
-				new ImageIcon(goHipsterFrame.class
-						.getResource("../icons/Male-User@Low.png")),
+		tabbedPane.addTab("not hipster", new ImageIcon(goHipsterFrame.class.getResource("../icons/Male-User@Low.png")),
 				lblNewLabel_1, "You are not");
 
 		panel_2 = new JPanel();
@@ -276,7 +252,7 @@ public class goHipsterFrame extends JFrame {
 		panel_3.setBackground(Color.GRAY);
 		contentPane.add(panel_3);
 		panel_3.setLayout(new BorderLayout(0, 0));
-		
+
 		lbl = new JLabel("Peluquero! una de: ");
 		panel_3.add(lbl, BorderLayout.NORTH);
 
@@ -290,12 +266,12 @@ public class goHipsterFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (rbtnMujer.isSelected()) {
 					limpiarCampos();
+					resetearCarita();
 					lblResultado.setText("");
 					btnMujer.setVisible(true);
 					btnHombre.setVisible(false);
-					cbBarba.setText("flequillo hachazo");
-					btnMujer.setIcon(new ImageIcon(goHipsterFrame.class
-							.getResource("../icons/Female-User@Low.png")));
+					cbTupe.setText("flequillo hachazo");
+					btnMujer.setIcon(new ImageIcon(goHipsterFrame.class.getResource("../icons/Female-User@Low.png")));
 				}
 			}
 		});
@@ -304,12 +280,13 @@ public class goHipsterFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (rbtnHombre.isSelected()) {
 					limpiarCampos();
-					lblResultado.setText("");
+					resetearCarita();
 					btnMujer.setVisible(false);
 					btnHombre.setVisible(true);
 					cbBarba.setText("barbita");
-					btnHombre.setIcon(new ImageIcon(goHipsterFrame.class
-							.getResource("../icons/Annoying-Hipster@Low.png")));
+					cbTupe.setText("tupé");
+					btnHombre.setIcon(
+							new ImageIcon(goHipsterFrame.class.getResource("../icons/Annoying-Hipster@Low.png")));
 				}
 			}
 		});
@@ -319,12 +296,11 @@ public class goHipsterFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (rbtnOtros.isSelected()) {
 					limpiarCampos();
-					lblResultado.setText("");
+					resetearCarita();
 					btnMujer.setVisible(false);
 					btnHombre.setVisible(true);
-					cbBarba.setText("barbita");
-					btnHombre.setIcon(new ImageIcon(goHipsterFrame.class
-							.getResource("../icons/Otros-User@Low.png")));
+					cbBarba.setText("peluca");
+					btnHombre.setIcon(new ImageIcon(goHipsterFrame.class.getResource("../icons/Otros-User@Low.png")));
 				}
 			}
 		});
@@ -335,81 +311,92 @@ public class goHipsterFrame extends JFrame {
 		cbGafa.addActionListener(actionListener);
 		cbTupe.addActionListener(actionListener);
 
-	
 	}
 
 	// code of the action listener class
 	class ActionHandler implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent event) {
-			str = lblResultado.getText();
-
+			
 			JCheckBox checkbox = (JCheckBox) event.getSource();
-
-			if (longitud <= 0) {
-				longitud = 0;
-				lblResultado.setText("");
-			}
-
+			String textoCB=checkbox.getText()+", ";
 			if (checkbox == cbBarba) {
+				
 				if (cbBarba.isSelected()) {
-					longitud += checkbox.getText().length();
-					lblResultado.setText(str += checkbox.getText()+"\n");
-					imgBarba.setVisible(true);
 					
+					lblResultado.append(textoCB);
+					imgBarba.setVisible(true);
+			
 				} else {
-					longitud -= checkbox.getText().length();
+					reemplazar(checkbox);
 					imgBarba.setVisible(false);
-					lblResultado.setText(str.substring(0, longitud));
+					
 				}
 			}
 			if (checkbox == cbBotonCuello) {
+				
 				if (cbBotonCuello.isSelected()) {
-					longitud += checkbox.getText().length();
-					lblResultado.setText(str += checkbox.getText()+"\n");
+					
+					lblResultado.append(textoCB);
 					imgCuello.setVisible(true);
+			
 				} else {
-					longitud -= checkbox.getText().length();
-					lblResultado.setText(str.substring(0, longitud));
+					reemplazar(checkbox);
 					imgCuello.setVisible(false);
 
 				}
 			}
 			if (checkbox == cbTupe) {
+			
 				if (cbTupe.isSelected()) {
-					longitud += checkbox.getText().length();
-					lblResultado.setText(str += checkbox.getText()+"\n");
+					if(cbTupe.getText().equals("flequillo hachazo"))
+						imgTupe.setIcon(new ImageIcon(goHipsterFrame.class.getResource("../icons/accesoriohachazo.png")));
+					else
+						imgTupe.setIcon(new ImageIcon(goHipsterFrame.class.getResource("../icons/accesoriotupe.png")));
+
+					lblResultado.append(textoCB);
 					imgTupe.setVisible(true);
+				
 				} else {
-					longitud -= checkbox.getText().length();
-					lblResultado.setText(str.substring(0, longitud));
+					reemplazar(checkbox);
 					imgTupe.setVisible(false);
 
 				}
 			}
 
 			if (checkbox == cbGafa) {
+			
 				if (cbGafa.isSelected()) {
-					longitud += checkbox.getText().length();
-					lblResultado.setText(str += checkbox.getText()+"\n");
+					lblResultado.append(textoCB);
 					imgGafas.setVisible(true);
+					
 				} else {
-					longitud -= checkbox.getText().length();
-					lblResultado.setText(str.substring(0, longitud));
+					reemplazar(checkbox);
 					imgGafas.setVisible(false);
 				}
 			}
 
 		}
-	}
 	
-	public void limpiarCampos(){
-		longitud=0;
+	}
+	public void reemplazar(JCheckBox cb){
+		String from = cb.getText()+", ";
+        int start = lblResultado.getText().indexOf(from);
+        if (start >= 0 && from.length() > 0)
+          lblResultado.replaceRange("", start, start+ from.length());
+	}
+	public void limpiarCampos() {
 		cbBarba.setSelected(false);
+		lblResultado.setText("");
 		cbBotonCuello.setSelected(false);
 		cbGafa.setSelected(false);
 		cbTupe.setSelected(false);
-
 	}
-}
+	public void resetearCarita(){
+		imgBarba.setVisible(false);
+		imgCuello.setVisible(false);
+		imgGafas.setVisible(false);
+		imgTupe.setVisible(false);
+	}
 
+}

@@ -18,7 +18,6 @@ public class Init extends JFrame {
 				}
 			}
 		});
-		//Aspecto de botón en función de elección en radioButton
-		
+
 	}
 }
