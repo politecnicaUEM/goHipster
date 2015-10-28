@@ -28,6 +28,11 @@ import java.awt.ScrollPane;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+
+import javax.swing.JLayeredPane;
+import java.awt.Font;
 
 public class Hipster_1 extends JFrame {
 	
@@ -43,6 +48,12 @@ public class Hipster_1 extends JFrame {
 	private JTextArea textArea;
 	private JTextArea textArea_1;
 	private JTextArea comentarios;
+	private JLabel lblNewLabel ;
+	private JLabel lblNewLabel_1 ;
+	private JLabel lblNewLabel_2 ;
+	private JLabel lblNewLabel_3;
+	private JLabel lblNewLabel_4;
+
 
 	
 	/**
@@ -54,6 +65,7 @@ public class Hipster_1 extends JFrame {
 				try {
 					Hipster_1 frame = new Hipster_1();
 					frame.setVisible(true);
+					frame.setTitle("Goooo hipster go!");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -185,17 +197,48 @@ public class Hipster_1 extends JFrame {
 			JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 			panel_1.add(tabbedPane);
 	
-				JLabel lblNewLabel = new JLabel("To be a hipster");
-				JLabel lblNewLabel_1 = new JLabel("Not to be a hipster");
+		
+			
+		
 				
-				tabbedPane.addTab("hipster", new ImageIcon(Hipster_1.class
-						.getResource("/icons/Annoying-Hipster@Low.png")), 
-						lblNewLabel, "You are");
-				tabbedPane.addTab("non hipster", new ImageIcon(Hipster_1.class
-						.getResource("/icons/Male-User@Low.png")), 
-						lblNewLabel_1, "You are not");
+				JLayeredPane layeredPane_1 = new JLayeredPane();
+				tabbedPane.addTab("Hipster", new ImageIcon(Hipster_1.class.getResource("/icons/Annoying-Hipster.png")), layeredPane_1, null);
+				
+				JLayeredPane layeredPane = new JLayeredPane();
+				tabbedPane.addTab("Nop Hipster", new ImageIcon(Hipster_1.class.getResource("/icons/Male-User.png")), layeredPane, null);
+				
+					lblNewLabel = new JLabel("");
+					lblNewLabel.setIcon(new ImageIcon(Hipster_1.class.getResource("/icons2/antes.png")));
+					lblNewLabel.setBounds(93, 16, 107, 55);
+					layeredPane_1.add(lblNewLabel);
+					
+					
+					lblNewLabel_1 = new JLabel("");
+					lblNewLabel_1.setIcon(new ImageIcon(Hipster_1.class.getResource("/icons2/accesoriotupe.png")));
+					lblNewLabel_1.setBounds(93, 0, 107, 97);
+					layeredPane_1.add(lblNewLabel_1);
+					lblNewLabel_1.setVisible(false);
+					
+					lblNewLabel_2 = new JLabel("");
+					lblNewLabel_2.setIcon(new ImageIcon(Hipster_1.class.getResource("/icons2/accesoriobarbita.png")));
+					lblNewLabel_2.setBounds(93, 20, 81, 55);
+					layeredPane_1.add(lblNewLabel_2);
+					lblNewLabel_2.setVisible(false);
+					
+					
+					lblNewLabel_3 = new JLabel("");
+					lblNewLabel_3.setIcon(new ImageIcon(Hipster_1.class.getResource("/icons2/accesoriogafapasta.png")));
+					lblNewLabel_3.setBounds(93, 33, 96, 16);
+					layeredPane_1.add(lblNewLabel_3);
+					lblNewLabel_3.setVisible(false);
+					
+					lblNewLabel_4 = new JLabel("New label");
+					lblNewLabel_4.setIcon(new ImageIcon(Hipster_1.class.getResource("/icons2/accesoriobotoncuello.png")));
+					lblNewLabel_4.setBounds(93, -17, 107, 120);
+					layeredPane_1.add(lblNewLabel_4);
+					lblNewLabel_4.setVisible(false);
 
-				
+					
 				
 				
 				//panel de abajo a la izquierda	
@@ -205,7 +248,24 @@ public class Hipster_1 extends JFrame {
 				comentarios = new JTextArea();
 				comentarios.setText("Añade tus comentarios...");
 				scrollPane.setViewportView(comentarios);
+
+						comentarios.addFocusListener(new FocusListener(){
+
+							@Override
+							public void focusGained(FocusEvent e) {
+								// TODO Auto-generated method stub
+								comentarios.setText("");
+							}
+
+							@Override
+							public void focusLost(FocusEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+						
 					
+					
+						});
 	
 			
 			//panel de abajo a la derecha
@@ -225,17 +285,32 @@ public class Hipster_1 extends JFrame {
 	
 	
  //metodo
-	
+		
 		public String selection2Pane() {
+			lblNewLabel_1.setVisible(false);
+			lblNewLabel_2.setVisible(false);
+			lblNewLabel_3.setVisible(false);
+			lblNewLabel_4.setVisible(false);
+			
+			
 			String text = "";
-			if (checkgafaspasta.isSelected())
+			
+			if (checkgafaspasta.isSelected()){
 				text += "Con sus Gafitas\n";
-			if (checkbarbita.isSelected())
+				lblNewLabel_3.setVisible(true);
+			}
+			if (checkbarbita.isSelected()){
 				text += "Con su Barbita\n";
-			if (checktupe.isSelected())
+				lblNewLabel_2.setVisible(true);
+			}
+			if (checktupe.isSelected()){
 				text += "Con su Tupé\n";
-			if (checkboton.isSelected())
+				lblNewLabel_1.setVisible(true);
+			}
+			if (checkboton.isSelected()){
 				text += "Con su botón en el cuello de moda\n";
+				lblNewLabel_4.setVisible(true);
+			}
 			if (mujer.isSelected())
 				text += "Esa mujer\n";
 			if (hombre.isSelected())
@@ -246,7 +321,6 @@ public class Hipster_1 extends JFrame {
 			return text;
 
 		}
-	
 	}
 
 
