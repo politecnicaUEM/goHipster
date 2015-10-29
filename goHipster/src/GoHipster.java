@@ -53,7 +53,11 @@ import java.awt.event.MouseEvent;
 import java.awt.SystemColor;
 
 
+
+
+ 
 public class GoHipster extends JFrame {
+	String TextoPoner = "";
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextPane CuadroTexto;
 
@@ -151,13 +155,11 @@ public class GoHipster extends JFrame {
 		buttonHombre.setMargin(new Insets(0, 0, 0, 0));
 
 		JButton buttonMujer = new JButton("");
-		buttonMujer.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-
-				// Aqui meto el codigo del evento del click
+		buttonMujer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
+
 		panel_9.add(buttonMujer);
 		buttonMujer.setIcon(new ImageIcon("C:\\Users\\Miguel\\Google Drive\\UEM\\Workspace\\VentanaGoHipster\\PNGs\\Male-User.png"));
 		buttonMujer.setMargin(new Insets(0, 0, 0, 0));
@@ -255,7 +257,8 @@ public class GoHipster extends JFrame {
 
 				String Textolibre = "\n" + cuadroEscribible.getText();
 
-				String TextoPoner = "";
+				//	String TextoPoner = "";
+				TextoPoner = "";
 
 				if (chckbxGafasPasta.isSelected()){
 					String Gafas ="Con sus gafitas de pasta.\n";
@@ -280,6 +283,17 @@ public class GoHipster extends JFrame {
 
 			}
 		});
+		buttonMujer.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				// Aqui meto el codigo del evento click del boton buttonMujer. 
+				cuadroEscribible.setText("");
+				CuadroTexto.setText("");
+
+			}
+		});
 
 	}
+
 }
