@@ -36,12 +36,14 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 
 public class Vista {
-
-	private JFrame frame;
+	JFrame frame;
 	private JRadioButton rbtn3;
+	private JCheckBox chkbox1;
+	private JCheckBox chkbox2;
+	private JCheckBox chkbox3;
+	private JCheckBox chkbox4;
+	private JTextArea txtAreaResults;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
-	Modelo mod = new Modelo();
 
 	/**
 	 * Launch the application.
@@ -69,6 +71,8 @@ public class Vista {
 
 	/**
 	 * Create the application.
+	 * 
+	 * @wbp.parser.entryPoint
 	 */
 	public Vista() {
 		initialize();
@@ -94,16 +98,16 @@ public class Vista {
 		panel.add(panel_4);
 		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.Y_AXIS));
 
-		JCheckBox chkbox1 = new JCheckBox("gafas pasta");
+		chkbox1 = new JCheckBox("gafas pasta");
 		panel_4.add(chkbox1);
 
-		JCheckBox chkbox2 = new JCheckBox("barba");
+		chkbox2 = new JCheckBox("barba");
 		panel_4.add(chkbox2);
 
-		JCheckBox chkbox3 = new JCheckBox("tupé");
+		chkbox3 = new JCheckBox("tupé");
 		panel_4.add(chkbox3);
 
-		JCheckBox chkbox4 = new JCheckBox("botón cuello");
+		chkbox4 = new JCheckBox("botón cuello");
 		panel_4.add(chkbox4);
 
 		JPanel panel_5 = new JPanel();
@@ -155,10 +159,22 @@ public class Vista {
 		JPanel hipster = new JPanel();
 		tabbedPane.addTab("Hipster", new ImageIcon(Vista.class.getResource("/icons/Annoying-Hipster@Low.png")), hipster,
 				null);
+		hipster.setLayout(null);
+
+		JTextArea txtrHipster = new JTextArea();
+		txtrHipster.setText("Hipster");
+		txtrHipster.setBounds(0, 71, 100, 20);
+		hipster.add(txtrHipster);
 
 		JPanel non_hipster = new JPanel();
 		tabbedPane.addTab("Non Hipster", new ImageIcon(Vista.class.getResource("/icons/Male-User@Low.png")),
 				non_hipster, null);
+		non_hipster.setLayout(null);
+
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(12, 70, 45, 15);
+		textArea.setText("Hipster");
+		non_hipster.add(textArea);
 
 		JPanel panel_2 = new JPanel();
 		frame.getContentPane().add(panel_2);
@@ -174,7 +190,7 @@ public class Vista {
 		frame.getContentPane().add(panel_3);
 		panel_3.setLayout(new BorderLayout(0, 0));
 
-		JTextArea txtAreaResults = new JTextArea();
+		txtAreaResults = new JTextArea();
 		txtAreaResults.setBackground(Color.LIGHT_GRAY);
 		txtAreaResults.setEditable(false);
 		panel_3.add(txtAreaResults, BorderLayout.CENTER);
@@ -240,6 +256,54 @@ public class Vista {
 				}
 			}
 		});
+		chkbox1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				escribeContenido();
+			}
+		});
+		chkbox2.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				escribeContenido();
+			}
+		});
+		chkbox3.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				escribeContenido();
+			}
+		});
+		chkbox4.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				escribeContenido();
+			}
+		});
+		btn1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				txtAreaResults.setText(txtAreaResults.getText() + "\n " + txtAreaEntrada.getText());
+			}
+		});
+
 	}
 
+	private void escribeContenido() {
+		txtAreaResults.setText("");
+		if (chkbox1.isSelected())
+			txtAreaResults.setText("GafaPasta");
+		if (chkbox2.isSelected())
+			txtAreaResults.setText(txtAreaResults.getText() + "\n Barba");
+		if (chkbox3.isSelected())
+			txtAreaResults.setText(txtAreaResults.getText() + "\n Tupé");
+		if (chkbox4.isSelected())
+			txtAreaResults.setText(txtAreaResults.getText() + "\n Botón de moda en el cuello");
+
+	}
 }
