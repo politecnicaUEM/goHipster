@@ -16,6 +16,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
+import javax.swing.JLayeredPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
@@ -27,6 +28,13 @@ import javax.swing.border.TitledBorder;
 
 import java.awt.Component;
 import java.awt.Panel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseAdapter;
 
 public class MyFrame extends JFrame {
 
@@ -34,10 +42,16 @@ public class MyFrame extends JFrame {
 	private JRadioButton rdbtnH;
 	private JRadioButton rdbtnM;
 	private JRadioButton rdbtnO;
-	JCheckBox chckbxGafas;
-	JCheckBox chckbxBarba;
-	JCheckBox chckbxTupe;
-	JCheckBox chckbxCuello;
+	private JCheckBox chckbxGafas;
+	private JCheckBox chckbxBarba;
+	private JCheckBox chckbxTupe;
+	private JCheckBox chckbxCuello;
+	private JTextArea textResul;
+	private JTextArea textComent;
+	private JButton btnAnadir;
+	private JButton btnReset;
+	private JLabel lblNoHipster;
+	private JLabel lblHipster;
 
 	/**
 	 * Launch the application.
@@ -102,16 +116,31 @@ public class MyFrame extends JFrame {
 		ButtonGroup bg = new ButtonGroup();
 
 		rdbtnH = new JRadioButton("Hombre");
+		rdbtnH.setSelected(true);
+		rdbtnH.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnAnadir.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/Male-User.png")));
+			}
+		});
 		panel_6.add(rdbtnH);
 		rdbtnH.setHorizontalAlignment(SwingConstants.LEFT);
 		bg.add(rdbtnH);
 		
 		rdbtnM = new JRadioButton("Mujer");
+		rdbtnM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnAnadir.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/Female-User.png")));
+			}
+		});
 		panel_6.add(rdbtnM);
-		//rdbtnM.setSelected(true);
 		bg.add(rdbtnM);
 		
 		rdbtnO = new JRadioButton("Otros");
+		rdbtnO.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnAnadir.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/The-Wolverine.png")));
+			}
+		});
 		panel_6.add(rdbtnO);
 		rdbtnO.setHorizontalAlignment(SwingConstants.CENTER);
 		bg.add(rdbtnO);
@@ -126,30 +155,79 @@ public class MyFrame extends JFrame {
 		Component horizontalGlue = Box.createHorizontalGlue();
 		panel_7.add(horizontalGlue);
 		
-		JButton btnAnadir = new JButton("");
+		btnAnadir = new JButton("");
+		/*btnAnadir.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				btnAnadir.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/The-Wolverine.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnAnadir.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/Male-User.png")));
+			}
+		});*/
+		btnAnadir.setToolTipText("Añadir estilos");
+		btnAnadir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textResul.setForeground(Color.WHITE);
+				textResul.setText(seleccionarEstilo()+"\n"+textComent.getText());
+			}
+
+			private String seleccionarEstilo() {
+				// TODO Auto-generated method stub
+				String text = "";				
+				if(chckbxGafas.isSelected())
+					text += "Con sus gafas\n";				
+				if(chckbxBarba.isSelected())
+					text += "Con su barba\n";				
+				if(chckbxTupe.isSelected())
+					text += "Con su tupé\n";				
+				if(chckbxCuello.isSelected())
+					text += "Con su cuello\n";
+				if(rdbtnH.isSelected())
+					text += "Que guapo!!";
+				if(rdbtnM.isSelected())
+					text += "Que guapa!!";
+				if(rdbtnO.isSelected())
+					text += "Quién eres??";
+				
+				return text;
+			}
+		});
+		
 		panel_7.add(btnAnadir);
 		btnAnadir.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/Male-User.png")));
 		btnAnadir.setMargin(new Insets(1,1,1,1));
 		
-		JButton btnReset = new JButton("");
+		btnReset = new JButton("");
+		btnReset.setToolTipText("Reset");
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textResul.setForeground(Color.LIGHT_GRAY);
+			}
+		});
+		
 		panel_7.add(btnReset);
 		btnReset.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/Annoying-Hipster.png")));
 		btnReset.setMargin(new Insets(1,1,1,1));
-		
+			
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1);
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		panel_1.add(tabbedPane);
+			
+		lblNoHipster = new JLabel("not to be a hipster");
+		//lblNoHipster.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/antes.png")));
 		
-		JLabel lblNewLabel = new JLabel("not to be a Hipster");	
-		JLabel lblNewLabel_1 = new JLabel("to be a Hipster");
-		
+		lblHipster = new JLabel("to be a hipster");
+		//lblHipster.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/antes.png")));
+				
 		tabbedPane.addTab("Hipster", new ImageIcon(
-				MyFrame.class.getResource("/icons/Annoying-Hipster@Low.png")), lblNewLabel_1, "you are");
+				MyFrame.class.getResource("/icons/Annoying-Hipster@Low.png")), lblHipster, "you are");
 		tabbedPane.addTab("Non Hipster", new ImageIcon(
-				MyFrame.class.getResource("/icons/Male-User@Low.png")), lblNewLabel, "you are not");
+				MyFrame.class.getResource("/icons/Male-User@Low.png")), lblNoHipster, "you are not");
 		
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2);
@@ -158,18 +236,42 @@ public class MyFrame extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		panel_2.add(scrollPane, BorderLayout.CENTER);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setText("Añade tus comentarios....");
-		scrollPane.setViewportView(textArea);
+		textComent = new JTextArea();
+		textComent.setText("Añade tus comentarios....");
+		textComent.addMouseListener(new MouseListener(){
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				textComent.setText("");
+			}
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub				
+			}
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub				
+			}
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				// TODO Auto-generated method stub				
+			}
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				// TODO Auto-generated method stub			
+			}			
+		});
+		scrollPane.setViewportView(textComent);
 		
 		JPanel panel_3 = new JPanel();
 		contentPane.add(panel_3);
 		panel_3.setLayout(new BorderLayout(0,0));
 		
-		JTextArea textArea2 = new JTextArea();
-		textArea2.setEditable(false);
-		textArea2.setBackground(new Color(120,120,120,255));
-		panel_3.add(textArea2, BorderLayout.CENTER);
+		textResul = new JTextArea();
+		textResul.setEditable(false);
+		textResul.setBackground(new Color(120,120,120,255));
+		panel_3.add(textResul, BorderLayout.CENTER);
 		
 	}
 
