@@ -91,11 +91,9 @@ public class MyFrame extends JFrame {
 		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.Y_AXIS));
 		
 		chckbxGafas = new JCheckBox("gafas pasta");
-		//chckbxGafas.setSelected(true);
 		panel_4.add(chckbxGafas);
 		
 		chckbxBarba = new JCheckBox("barbita");
-		//chckbxBarba.setSelected(true);
 		panel_4.add(chckbxBarba);
 		
 		chckbxTupe = new JCheckBox("tupé");
@@ -219,10 +217,8 @@ public class MyFrame extends JFrame {
 		panel_1.add(tabbedPane);
 			
 		lblNoHipster = new JLabel("not to be a hipster");
-		//lblNoHipster.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/antes.png")));
-		
 		lblHipster = new JLabel("to be a hipster");
-		//lblHipster.setIcon(new ImageIcon(MyFrame.class.getResource("/icons/antes.png")));
+		
 				
 		tabbedPane.addTab("Hipster", new ImageIcon(
 				MyFrame.class.getResource("/icons/Annoying-Hipster@Low.png")), lblHipster, "you are");
@@ -241,7 +237,7 @@ public class MyFrame extends JFrame {
 		textComent.addMouseListener(new MouseListener(){
 
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				textComent.setText("");
 			}
