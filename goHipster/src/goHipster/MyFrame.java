@@ -12,7 +12,9 @@ import javax.swing.border.TitledBorder;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 
+import javax.swing.AbstractButton;  
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.BoxLayout;
@@ -26,10 +28,12 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+
 import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+
 import javax.swing.JTextField;
 import javax.swing.Box;
 
@@ -38,6 +42,15 @@ import javax.swing.Box;
 public class MyFrame extends JFrame {
 
 	private JPanel contentPane;
+	private JCheckBox chckbxGafasPasta;
+	private JCheckBox chckbxBarbita;
+	private JCheckBox chckbxCuelloAbotonado;
+	private JCheckBox chckbxTup;
+	private JRadioButton rdbtnGafasPasta;
+	private JRadioButton rdbtnBarba;
+	private JRadioButton rdbtnTup;
+	private JTextArea txtrAadeTusComentarios;
+	private JTextArea textArea_1;
 
 	/**
 	 * Launch the application.
@@ -77,17 +90,17 @@ public class MyFrame extends JFrame {
 		panel.add(panel_4);
 		panel_4.setLayout(new BoxLayout(panel_4, BoxLayout.Y_AXIS));
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Gafas pasta");
-		panel_4.add(chckbxNewCheckBox);
+		chckbxGafasPasta = new JCheckBox("Gafas pasta");
+		panel_4.add(chckbxGafasPasta);
 		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Barbita");
-		panel_4.add(chckbxNewCheckBox_1);
+		chckbxBarbita = new JCheckBox("Barbita");
+		panel_4.add(chckbxBarbita);
 		
-		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("TupÈ");
-		panel_4.add(chckbxNewCheckBox_2);
+		chckbxTup = new JCheckBox("Tup√©");
+		panel_4.add(chckbxTup);
 		
-		JCheckBox chckbxNewCheckBox_3 = new JCheckBox("BotÛn Cuello");
-		panel_4.add(chckbxNewCheckBox_3);
+		chckbxCuelloAbotonado = new JCheckBox("Bot√≥n Cuello");
+		panel_4.add(chckbxCuelloAbotonado);
 		
 		JPanel panel_5 = new JPanel();
 		panel.add(panel_5);
@@ -98,14 +111,22 @@ public class MyFrame extends JFrame {
 		panel_5.add(panel_6);
 		panel_6.setLayout(new BoxLayout(panel_6, BoxLayout.Y_AXIS));
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Hombre");
-		panel_6.add(rdbtnNewRadioButton);
+		ButtonGroup group = new ButtonGroup();
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Mujer");
-		panel_6.add(rdbtnNewRadioButton_1);
+		rdbtnGafasPasta = new JRadioButton("Hombre");
+		panel_6.add(rdbtnGafasPasta);
+		rdbtnGafasPasta.setHorizontalAlignment(SwingConstants.LEFT);
+		group.add(rdbtnGafasPasta);
 		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Otros");
-		panel_6.add(rdbtnNewRadioButton_2);
+		rdbtnBarba = new JRadioButton("Mujer");
+		panel_6.add(rdbtnBarba);
+		group.add(rdbtnBarba);
+		
+		rdbtnTup = new JRadioButton("Otros");
+		panel_6.add(rdbtnTup);
+		rdbtnTup.setHorizontalAlignment(SwingConstants.CENTER);
+		rdbtnTup.setSelected(true);
+		group.add(rdbtnTup);
 		
 		Component verticalGlue = Box.createVerticalGlue();
 		panel_5.add(verticalGlue);
@@ -116,7 +137,10 @@ public class MyFrame extends JFrame {
 		
 		JButton btnNewButton = new JButton();
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {		
+			public void actionPerformed(ActionEvent e) {	
+				textArea_1.setForeground(Color.WHITE);
+				textArea_1.setText(selection2Pane() + '\n'
+						+ txtrAadeTusComentarios.getText());
 			}
 		});
 		btnNewButton.setIcon(new ImageIcon(MyFrame.class
@@ -128,12 +152,14 @@ public class MyFrame extends JFrame {
 		JButton btnNewButton_1 = new JButton();
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				textArea_1.setForeground(Color.LIGHT_GRAY);
 
 			}
 		});
 		btnNewButton_1.setIcon(new ImageIcon(MyFrame.class
-				.getResource("/icons/Male-User.png")));
+				.getResource("/icons/Female-User.png")));
 		panel_7.add(btnNewButton_1);
+		
 		
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1);
@@ -143,12 +169,12 @@ public class MyFrame extends JFrame {
 		panel_1.add(tabbedPane);
 		
 		JLabel lblNewLabel= new JLabel("To be a hipster");
-		tabbedPane.addTab("Hipster", new ImageIcon(MyFrame.class
+		tabbedPane.addTab("Antes", new ImageIcon(MyFrame.class
 				.getResource("/icons/Annoying-Hipster@Low.png")), lblNewLabel, "you are");
 		
 		
 		JLabel lblNewLabel_1 = new JLabel("Not to be a hipster");
-		tabbedPane.addTab("Not hipster",new ImageIcon(MyFrame.class
+		tabbedPane.addTab("Despues",new ImageIcon(MyFrame.class
 				.getResource("/icons/Male-User@Low.png")), lblNewLabel_1, "you are not");
 	
 		
@@ -159,25 +185,41 @@ public class MyFrame extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		panel_2.add(scrollPane, BorderLayout.CENTER);
 		
-		JTextArea textArea = new JTextArea();
-		scrollPane.setViewportView(textArea);
-
-		textArea.setText("AÒade tus comentarios...");
-		scrollPane.setViewportView(textArea);
+		txtrAadeTusComentarios = new JTextArea();
+		scrollPane.setViewportView(txtrAadeTusComentarios);
+		txtrAadeTusComentarios.setText("A√±ade tus comentarios...");
+		
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(Color.WHITE);
 		contentPane.add(panel_3);
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
-		JTextArea textArea_1 = new JTextArea();
+		textArea_1 = new JTextArea();
+		textArea_1.setEditable(false);
 		textArea_1.setBackground(Color.GRAY);
-		textArea_1.setForeground(Color.GRAY);
-		textArea_1.setCaretColor(Color.GRAY);
+		textArea_1.setForeground(Color.WHITE);
 		panel_3.add(textArea_1, BorderLayout.CENTER);
 		
-		
-		
 	}
-
+	public String selection2Pane() {
+		String text = "";
+		if (chckbxGafasPasta.isSelected())
+			text += "con sus gafitas\n";
+		if (chckbxBarbita.isSelected())
+			text += "con su barbita\n";
+		if (chckbxTup.isSelected())
+			text += "con su tup√©\n";
+		if (chckbxCuelloAbotonado.isSelected())
+			text += "con su bot√≥n en el cuello de moda\n";
+		if (rdbtnBarba.isSelected())
+			text += "esa mujer\n";
+		if (rdbtnGafasPasta.isSelected())
+			text += "ese hombre\n";
+		if (rdbtnTup.isSelected())
+			text += "esa sexualidad diversa\n";
+		return text;
+				
 }
+}
+
+
