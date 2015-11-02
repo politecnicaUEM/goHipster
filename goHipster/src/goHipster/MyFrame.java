@@ -23,20 +23,22 @@ import java.awt.Insets;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
 
 import java.awt.Dimension;
 import java.awt.Color;
 
 import javax.swing.border.TitledBorder;
-import javax.swing.event.ChangeEvent;
 import javax.swing.Box;
 
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.SwingConstants;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JMenu;
+import javax.swing.JPopupMenu;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MyFrame extends JFrame {
 
@@ -50,11 +52,11 @@ public class MyFrame extends JFrame {
 	private JRadioButton radbut1 = new JRadioButton("hombre");
 	private JRadioButton radbut2 = new JRadioButton("mujer");
 	private JRadioButton radbut3 = new JRadioButton("otros");
-	//hola
 	private JTextArea Comentario = new JTextArea();
 	private JTextArea textArea = new JTextArea();
 	private JButton button1 = new JButton("");
 	private JButton button2 = new JButton("");
+	private String txt5 = "";
 	
 	/**
 	 * Launch the application.
@@ -78,7 +80,47 @@ public class MyFrame extends JFrame {
 	 */
 	public MyFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 380);
+		setBounds(100, 100, 500, 400);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu MenuPpal = new JMenu("Menú");
+		menuBar.add(MenuPpal);
+		
+		JMenuItem Mnop1 = new JMenuItem("Op1");
+		MenuPpal.add(Mnop1);
+		Mnop1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				txt5 = "Ha elegido la opción 1";
+				textArea.setText(txt5);
+			}
+		});
+		
+		JMenuItem Mnop2 = new JMenuItem("Op2");
+		MenuPpal.add(Mnop2);
+		Mnop2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				txt5 = "Ha elegido la opción 2";
+				textArea.setText(txt5);
+			}
+		});
+		
+		JMenuItem Mnop3 = new JMenuItem("Op3");
+		MenuPpal.add(Mnop3);
+		Mnop3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				txt5 = "Ha elegido la opción 3";
+				textArea.setText(txt5);
+			}
+		});
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -248,4 +290,21 @@ public class MyFrame extends JFrame {
 		textArea.setText(txt4 + txt + txt1 + txt2 + txt3 + "\n" + Comentario.getText());	
 	}
 	
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
+	}
 }
